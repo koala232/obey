@@ -31,7 +31,7 @@
          {position: fixed; width: var(--width); height: var(--height);}
 
 .ichi    {z-index: 1;   }
-.ni      {z-index: 2;   background-color: black;}
+.ni      {z-index: 2;   background-color: white;}
 .san     {z-index: 3;}
 .shi     {z-index: 4;}
 
