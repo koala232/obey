@@ -7,6 +7,11 @@ var audioFiles = [
         song: "Frank Miller (Kill Again)"
         },
         {
+        src: "https://files.catbox.moe/4jj9yl.mp3",
+        artist: "Ph11y",
+        song: "cuando se te seca la tarea X cuando se te moja la tarea"
+        },
+        {
         src: "https://files.catbox.moe/hg38sh.mp3",
         artist: "MAKAVELIGODD",
         song: "Harakiri"
