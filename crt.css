@@ -2,7 +2,7 @@
     background-image: url('pixel.apng');
     background-size: 2px 1px;
     background-color: #fff;
-    background-blend-mode: hard-light;
+    background-blend-mode: light;
     mix-blend-mode: multiply;
     pointer-events: none;
     opacity: .4
