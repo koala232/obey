@@ -17,11 +17,6 @@ var audioFiles = [
         song: "Harakiri"
         },
         {
-        src: "https://files.catbox.moe/elbjvs.mp3",
-        artist: "Ghostemane",
-        song: "Andromeda"
-        },
-        {
         src: "https://files.catbox.moe/mjbxka.mp3",
         artist: "Ghostemane",
         song: "FairWeatherFanz"
@@ -60,16 +55,6 @@ var audioFiles = [
         src: "https://files.catbox.moe/jatvxa.mp3",
         artist: "BONES",
         song: "Weather Man"
-        },
-        {
-        src: "https://files.catbox.moe/uzvgme.mp3",
-        artist: "6 Dogs",
-        song: "Mazi Love"
-        },
-        {
-        src: "https://files.catbox.moe/9b0h4j.mp3",
-        artist: "6 Dogs",
-        song: "beautiful whips"
         },
         {
         src: "https://files.catbox.moe/idwajf.mp3",
