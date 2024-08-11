@@ -8,31 +8,56 @@
     <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>
     <title>obey</title>
     <style>
+        /* Your existing styles */
         .container {
             max-width: 1200px;
-            margin: 0 auto;display:flex;
+            margin: 0 auto;
+            display: flex;
             justify-content: center;
             align-items: center;
         }
+
         .ascii pre {
-            background-color:transparent;
-            border:none;
+            background-color: transparent;
+            border: none;
             color: white;
-            text-align:center;
+            text-align: center;
             padding: 10px 0;
+            /* This line makes the glitch effect work */
+            animation: glitch 1s infinite;
         }
-        .ascii > * {
-          position:relative;
-          top:25px;
-        }
-        .content {
-            padding: 20px;
-            min-height: 500px;
+
+        /* Glitch animation code */
+        @keyframes glitch {
+            0% {
+                text-shadow: 2px 2px red, -2px -2px blue;
+                transform: translate(0px, 0px);
+            }
+            20% {
+                text-shadow: -2px -2px red, 2px 2px blue;
+                transform: translate(2px, -2px);
+            }
+            40% {
+                text-shadow: 2px -2px red, -2px 2px blue;
+                transform: translate(-2px, 2px);
+            }
+            60% {
+                text-shadow: -2px 2px red, 2px -2px blue;
+                transform: translate(2px, -2px);
+            }
+            80% {
+                text-shadow: 2px 2px red, -2px -2px blue;
+                transform: translate(-2px, 2px);
+            }
+            100% {
+                text-shadow: -2px -2px red, 2px 2px blue;
+                transform: translate(0px, 0px);
+            }
         }
     </style>
 </head>
 <body>
-      </div>
+
     <div class="ascii">
         <pre>
 $$$$$$\  $$$$$$$\  $$$$$$$$\ $$\     $$\ 
@@ -49,48 +74,51 @@ $$$$$$  |$$$$$$$  |$$$$$$$$\     $$ |
     <div class="container">
         <div class="content">
             <div class="profcont">
-            <div class="window profwin glass active">
-                <div class="title-bar">
-                  <div class="title-bar-text">obey.exe</div>
-                  <div class="title-bar-controls">
-                    <button aria-label="Minimize"></button>
-                    <button aria-label="Maximize"></button>
-                    <button aria-label="Close"></button>
-                  </div>
+                <div class="window profwin glass active">
+                    <div class="title-bar">
+                        <div class="title-bar-text">obey.exe</div>
+                        <div class="title-bar-controls">
+                            <button aria-label="Minimize"></button>
+                            <button aria-label="Maximize"></button>
+                            <button aria-label="Close"></button>
+                        </div>
+                    </div>
+                    <div class="window-body profbody has-space">
+                        <img src="./images/obey.jpg" style="height:120px;border-radius:5px;">
+                        <h5><strong>obey</strong></h5>
+                        <p>The True Don</p>
+                        <a href="https://t.me/a22cw" style="z-index:9999!important;" target="_blank"><img style="height:25px;margin-top:-50px;" src="./icon/telegram.png"></a>
+                        <a href="https://doxbin.com/user/obey" style="z-index:9999!important;" target="_blank"><img style="height:32.5px;margin-top:-65px;" src="./images/doxbin.png"></a>
+                    </div>
                 </div>
-                <div class="window-body profbody has-space">
-                    <img src="./images/obey.jpg" style="height:120px;border-radius:5px;">
-                    <h5><strong>obey</strong></h5>
-                    <p>The True Don</p>
-                    <a href="https://t.me/a22cw" style="z-index:9999!important;" target="_blank"><img style="height:25px;margin-top:-50px;" src="./icon/telegram.png"></a>
-                    <a href="https://doxbin.com/user/obey" style="z-index:9999!important;" target="_blank"><img style="height:32.5px;margin-top:-65px;" src="./images/doxbin.png"></a>
-                </div>
-              </div>
-        </div></div>
+            </div>
+        </div>
     </div>
-    <div class="audwin" style="max-width: 650px">
-      <div class="audio-controls">
-        <p style="font-size:13px;margin-bottom:5px;">Now Playing:</p>
-          <div id="songInfo" class="text-center">
-              <div id="artist">Artist</div>&nbsp;-&nbsp;<div id="songTitle">Song</div>
-          </div>
-          <div class="controls" style="margin-top:10px;margin-bottom:7px;">
-              <a onclick="previousAudio()" style="margin-right:10px;"><img src="./icon/back.png"></a>
-              <a id="playPauseButton" onclick="togglePlayPause()" style="margin-right:10px;"><img src="./icon/pause.png"></a>
-              <a onclick="nextAudio()"><img src="./icon/next.png"></a>
-          </div>
-      </div>
-    <audio id="audio"></audio>
-    <script src="./js/mzik.js"></script>
 
-    <script>
-      window.addEventListener('message', function(event) {
-          if (event.data === 'playMusic') {
-              document.getElementById('overlays').style.display = 'none';
-              
-              playMedia();
-          }
-      });
-  </script>
+    <div class="audwin" style="max-width: 650px">
+        <div class="audio-controls">
+            <p style="font-size:13px;margin-bottom:5px;">Now Playing:</p>
+            <div id="songInfo" class="text-center">
+                <div id="artist">Artist</div>&nbsp;-&nbsp;<div id="songTitle">Song</div>
+            </div>
+            <div class="controls" style="margin-top:10px;margin-bottom:7px;">
+                <a onclick="previousAudio()" style="margin-right:10px;"><img src="./icon/back.png"></a>
+                <a id="playPauseButton" onclick="togglePlayPause()" style="margin-right:10px;"><img src="./icon/pause.png"></a>
+                <a onclick="nextAudio()"><img src="./icon/next.png"></a>
+            </div>
+        </div>
+        <audio id="audio"></audio>
+        <script src="./js/mzik.js"></script>
+
+        <script>
+            window.addEventListener('message', function(event) {
+                if (event.data === 'playMusic') {
+                    document.getElementById('overlays').style.display = 'none';
+                    playMedia();
+                }
+            });
+        </script>
+    </div>
+
 </body>
 </html>
