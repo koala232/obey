@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,41 +34,76 @@
                 text-shadow: 2px 2px red, -2px -2px blue;
                 transform: translate(0px, 0px);
             }
+
             20% {
                 text-shadow: -2px -2px red, 2px 2px blue;
                 transform: translate(2px, -2px);
             }
+
             40% {
                 text-shadow: 2px -2px red, -2px 2px blue;
                 transform: translate(-2px, 2px);
             }
+
             60% {
                 text-shadow: -2px 2px red, 2px -2px blue;
                 transform: translate(2px, -2px);
             }
+
             80% {
                 text-shadow: 2px 2px red, -2px -2px blue;
                 transform: translate(-2px, 2px);
             }
+
             100% {
                 text-shadow: -2px -2px red, 2px 2px blue;
                 transform: translate(0px, 0px);
             }
         }
+
+        /* Ensure the audio controls are properly positioned */
+        .audwin {
+            max-width: 650px;
+            margin: 0 auto;
+            padding-top: 20px;
+        }
+
+        .audio-controls {
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .controls a img {
+            vertical-align: middle;
+            height: 25px;
+        }
+
+        #songInfo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            color: white;
+        }
+
+        #artist,
+        #songTitle {
+            font-weight: bold;
+        }
     </style>
 </head>
+
 <body>
 
     <div class="ascii">
-        <pre>
-$$$$$$\  $$$$$$$\  $$$$$$$$\ $$\     $$\ 
-$$  __$$\ $$  __$$\ $$  _____|\$$\   $$  |
-$$ /  $$ |$$ |  $$ |$$ |       \$$\ $$  / 
-$$ |  $$ |$$$$$$$\ |$$$$$\      \$$$$  /  
-$$ |  $$ |$$  __$$\ $$  __|      \$$  /   
-$$ |  $$ |$$ |  $$ |$$ |          $$ |    
-$$$$$$  |$$$$$$$  |$$$$$$$$\     $$ |    
-\______/ \_______/ \________|    \__|    
+        <pre>$$$$$$\ $$$$$$$\ $$$$$$$$\ $$\ $$\ 
+$$ __$$\ $$ __$$\ $$ _____|\$$\ $$ |
+$$ / $$ |$$ | $$ |$$ | \$$\ $$ /
+$$ | $$ |$$$$$$$\ |$$$$$\ \$$$$ /
+$$ | $$ |$$ __$$\ $$ __| \$$ /
+$$ | $$ |$$ | $$ |$$ | $$ |
+$$$$$$ |$$$$$$$ |$$$$$$$$\ $$ |
+\______/ \_______/ \________| \__| 
         </pre>
     </div>
 
@@ -95,11 +131,12 @@ $$$$$$  |$$$$$$$  |$$$$$$$$\     $$ |
         </div>
     </div>
 
-    <div class="audwin" style="max-width: 650px">
+    <div class="audwin">
         <div class="audio-controls">
             <p style="font-size:13px;margin-bottom:5px;">Now Playing:</p>
             <div id="songInfo" class="text-center">
-                <div id="artist">Artist</div>&nbsp;-&nbsp;<div id="songTitle">Song</div>
+                <div id="artist">Artist</div>&nbsp;-&nbsp;
+                <div id="songTitle">Song</div>
             </div>
             <div class="controls" style="margin-top:10px;margin-bottom:7px;">
                 <a onclick="previousAudio()" style="margin-right:10px;"><img src="./icon/back.png"></a>
@@ -111,7 +148,7 @@ $$$$$$  |$$$$$$$  |$$$$$$$$\     $$ |
         <script src="./js/mzik.js"></script>
 
         <script>
-            window.addEventListener('message', function(event) {
+            window.addEventListener('message', function (event) {
                 if (event.data === 'playMusic') {
                     document.getElementById('overlays').style.display = 'none';
                     playMedia();
@@ -121,4 +158,5 @@ $$$$$$  |$$$$$$$  |$$$$$$$$\     $$ |
     </div>
 
 </body>
+
 </html>
