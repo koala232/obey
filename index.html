@@ -25,35 +25,53 @@
     <meta property="og:type" content="website"/>
     <meta property="og:description" content="The True Don"/>
 
-    <!-- Add Background Animation -->
+    <!-- Add Advanced Background Animation -->
     <style>
         body {
-            background: linear-gradient(270deg, #000000, #2c3e50);
-            background-size: 400% 400%;
-            animation: gradientBackground 15s ease infinite;
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
         }
 
-        @keyframes gradientBackground {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        /* Fullscreen Background */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff0081, #ff8c00, #40e0d0, #8a2be2);
+            background-size: 400% 400%;
+            animation: gradientShift 10s ease infinite, noise 2s linear infinite;
+            z-index: -1;
+        }
+
+        /* Gradient Animation */
+        @keyframes gradientShift {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+
+        /* Noise Animation */
+        @keyframes noise {
+            0% { background: url('data:image/png;base64, ...') repeat; }
+            100% { background: url('data:image/png;base64, ...') repeat; }
         }
     </style>
 </head>
 
 <body>
 
-<crt id="crt">   
+    <div class="background"></div>
 
-</crt>
-
-<div class="load">        
-    <div class="ichi 一" style="display: flex; justify-content: center; align-items: center; flex-direction: column; height: 100vh; text-align: center;">
-        <h1 class="" style="margin: 0.5em;"><br></h1>
-        <img src="images/cock.gif" alt="Monkey" style="height: 300px; display: block; margin: 0 auto; padding: 1em;">
+    <div class="load">        
+        <div class="ichi 一" style="display: flex; justify-content: center; align-items: center; flex-direction: column; height: 100vh; text-align: center;">
+            <h1 class="" style="margin: 0.5em;"><br></h1>
+            <img src="images/cock.gif" alt="Monkey" style="height: 300px; display: block; margin: 0 auto; padding: 1em;">
+        </div>
+        <meta http-equiv="refresh" content="5; URL=desktop" />
     </div>
-    <meta http-equiv="refresh" content="5; URL=desktop" />
 
 </body>
-
 </html>
