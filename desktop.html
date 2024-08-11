@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,10 +29,55 @@
             padding: 20px;
             min-height: 500px;
         }
+        /* Volume Control Styles */
+        .volume-control {
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .volume-control label {
+            margin-right: 10px;
+        }
+
+        .volume-control input[type="range"] {
+            margin-right: 10px;
+            width: 100px;
+        }
+
+        .volume-control span {
+            font-size: 14px;
+        }
+
+        /* Cursor Trail Styles */
+        .cursor-trail {
+            position: fixed;
+            border-radius: 50%;
+            background-color: rgba(255, 0, 0, 0.5); /* Red color with transparency */
+            pointer-events: none; /* Ensures it doesn’t interfere with clicks */
+            transform: translate(-50%, -50%); /* Center the trail at cursor position */
+            transition: transform 0.1s ease;
+            width: 10px;
+            height: 10px;
+            z-index: 9999; /* Ensure it’s on top of other elements */
+        }
+
+        .cursor-trail:nth-of-type(2) {
+            width: 8px;
+            height: 8px;
+            background-color: rgba(0, 255, 0, 0.5); /* Green color with transparency */
+            transition: transform 0.15s ease;
+        }
+
+        .cursor-trail:nth-of-type(3) {
+            width: 6px;
+            height: 6px;
+            background-color: rgba(0, 0, 255, 0.5); /* Blue color with transparency */
+            transition: transform 0.2s ease;
+        }
     </style>
 </head>
 <body>
-      </div>
     <div class="ascii">
         <pre>
  $$$$$$\  $$$$$$$\  $$$$$$$$\ $$\     $$\ 
@@ -50,54 +94,88 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
     <div class="container">
         <div class="content">
             <div class="profcont">
-            <div class="window profwin glass active">
-                <div class="title-bar">
-                  <div class="title-bar-text">obey.exe</div>
-                  <div class="title-bar-controls">
-                    <button aria-label="Minimize"></button>
-                    <button aria-label="Maximize"></button>
-                    <button aria-label="Close"></button>
-                  </div>
+                <div class="window profwin glass active">
+                    <div class="title-bar">
+                        <div class="title-bar-text">obey.exe</div>
+                        <div class="title-bar-controls">
+                            <button aria-label="Minimize"></button>
+                            <button aria-label="Maximize"></button>
+                            <button aria-label="Close"></button>
+                        </div>
+                    </div>
+                    <div class="window-body profbody has-space">
+                        <img src="./images/obey.jpg" style="height:120px;border-radius:5px;">
+                        <h5><strong>obey</strong></h5>
+                        <p>The True Don</p>
+                        <a href="https://t.me/a22cw" style="z-index:9999!important;" target="_blank"><img style="height:25px;margin-top:-50px;" src="./icon/telegram.png"></a>
+                    </div>
                 </div>
-                <div class="window-body profbody has-space">
-                    <img src="./images/obey.jpg" style="height:120px;border-radius:5px;">
-                    <h5><strong>obey</strong></h5>
-                    <p>The True Don</p>
-                    <a href="https://t.me/a22cw" style="z-index:9999!important;" target="_blank"><img style="height:25px;margin-top:-50px;" src="./icon/telegram.png"></a>
-                </div>
-              </div>
-        </div></div>
+            </div>
+        </div>
     </div>
-    <div class="audwin" style="max-width: 650px">
-      <div class="audio-controls">
-        <p style="font-size:13px;margin-bottom:5px;">Now Playing:</p>
-          <div id="songInfo" class="text-center">
-              <div id="artist">Artist</div>&nbsp;-&nbsp;<div id="songTitle">Song</div>
-          </div>
-          <div class="controls" style="margin-top:10px;margin-bottom:7px;">
-              <a onclick="previousAudio()" style="margin-right:10px;"><img src="./icon/back.png"></a>
-              <a id="playPauseButton" onclick="togglePlayPause()" style="margin-right:10px;"><img src="./icon/pause.png"></a>
-              <a onclick="nextAudio()"><img src="./icon/next.png"></a>
-          </div>
-      </div>
-    <audio id="audio"></audio>
-    <script src="./js/mzik.js"></script>
 
-    <script>
-      window.addEventListener('message', function(event) {
-          if (event.data === 'playMusic') {
-              document.getElementById('overlays').style.display = 'none';
-              
-              playMedia();
-          }
-      });
-  </script>
+    <div class="audwin" style="max-width: 650px">
+        <div class="audio-controls">
+            <p style="font-size:13px;margin-bottom:5px;">Now Playing:</p>
+            <div id="songInfo" class="text-center">
+                <div id="artist">Artist</div>&nbsp;-&nbsp;<div id="songTitle">Song</div>
+            </div>
+            <div class="controls" style="margin-top:10px;margin-bottom:7px;">
+                <a onclick="previousAudio()" style="margin-right:10px;"><img src="./icon/back.png"></a>
+                <a id="playPauseButton" onclick="togglePlayPause()" style="margin-right:10px;"><img src="./icon/pause.png"></a>
+                <a onclick="nextAudio()"><img src="./icon/next.png"></a>
+            </div>
+            <!-- Volume Control Bar -->
+            <div class="volume-control">
+                <label for="volumeControl">Volume:</label>
+                <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="0.5">
+                <span id="volumeLabel">50%</span>
+            </div>
+        </div>
+        <audio id="audio"></audio>
+        <script src="./js/mzik.js"></script>
+        <script>
+            window.addEventListener('message', function(event) {
+                if (event.data === 'playMusic') {
+                    document.getElementById('overlays').style.display = 'none';
+                    playMedia();
+                }
+            });
+
+            // Volume Control Script
+            const volumeControl = document.getElementById('volumeControl');
+            const volumeLabel = document.getElementById('volumeLabel');
+            const audio = document.getElementById('audio');
+
+            volumeControl.addEventListener('input', function() {
+                const volume = this.value;
+                audio.volume = volume;
+                volumeLabel.textContent = Math.round(volume * 100) + '%';
+            });
+
+            // Cursor Trail Script
+            document.addEventListener('DOMContentLoaded', function() {
+                // Create cursor trail elements
+                const trailCount = 3;
+                for (let i = 0; i < trailCount; i++) {
+                    const trail = document.createElement('div');
+                    trail.className = 'cursor-trail';
+                    document.body.appendChild(trail);
+                }
+
+                const trails = document.querySelectorAll('.cursor-trail');
+
+                document.addEventListener('mousemove', function(e) {
+                    trails.forEach((trail, index) => {
+                        const delay = (index + 1) * 10; // Delay for each trail element
+                        setTimeout(() => {
+                            trail.style.left = `${e.pageX}px`;
+                            trail.style.top = `${e.pageY}px`;
+                        }, delay);
+                    });
+                });
+            });
+        </script>
+    </div>
 </body>
 </html>
-.content {
-    transition: all 0.3s ease;
-}
-
-.content:hover {
-    transform: scale(1.02);
-}
