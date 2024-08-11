@@ -10,43 +10,63 @@
     <style>
         .container {
             max-width: 1200px;
-            margin: 0 auto;display:flex;
+            margin: 0 auto;
+            display: flex;
             justify-content: center;
             align-items: center;
         }
         .ascii pre {
-            background-color:transparent;
-            border:none;
+            background-color: transparent;
+            border: none;
             color: white;
-            text-align:center;
+            text-align: center;
             padding: 10px 0;
         }
         .ascii > * {
-          position:relative;
-          top:25px;
+            position: relative;
+            top: 25px;
         }
         .content {
             padding: 20px;
             min-height: 500px;
         }
         /* Volume Control Styles */
+        .audio-controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
         .volume-control {
             margin-top: 10px;
             display: flex;
             align-items: center;
+            justify-content: center; /* Center content horizontally */
         }
 
         .volume-control label {
             margin-right: 10px;
+            font-size: 14px;
         }
 
         .volume-control input[type="range"] {
-            margin-right: 10px;
-            width: 100px;
+            margin: 0 10px;
+            width: 150px; /* Adjust width as needed */
         }
 
         .volume-control span {
             font-size: 14px;
+            margin-left: 10px;
+        }
+
+        /* Adjusting overall layout of audio-controls if needed */
+        .audio-controls p {
+            margin-bottom: 5px;
+        }
+
+        .audio-controls .controls {
+            margin-top: 10px;
+            margin-bottom: 7px;
         }
 
         /* Cursor Trail Styles */
@@ -169,13 +189,4 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
                     trails.forEach((trail, index) => {
                         const delay = (index + 1) * 10; // Delay for each trail element
                         setTimeout(() => {
-                            trail.style.left = `${e.pageX}px`;
-                            trail.style.top = `${e.pageY}px`;
-                        }, delay);
-                    });
-                });
-            });
-        </script>
-    </div>
-</body>
-</html>
+                           
