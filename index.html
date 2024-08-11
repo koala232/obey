@@ -1,6 +1,5 @@
-<!DOCTYPE html>   
-<html lang="en">  
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,21 +23,95 @@
     <meta property="og:title" content="obey"/>
     <meta property="og:type" content="website"/>
     <meta property="og:description" content="The True Don"/>
-</head>
 
+    <!-- Add Particles.js -->
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Fullscreen Particles Background */
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            background-color: #000; /* Optional */
+        }
+    </style>
+
+    <!-- Include Particles.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+</head>
 <body>
 
-<crt id="crt">   
+    <!-- Particles Container -->
+    <div id="particles-js"></div>
 
-</crt>
-
-<div class="load">        
-    <div class="ichi 一" style="display: flex; justify-content: center; align-items: center; flex-direction: column; height: 100vh; text-align: center;">
-        <h1 class="" style="margin: 0.5em;"><br></h1>
-        <img src="images/cock.gif" alt="Monkey" style="height: 300px; display: block; margin: 0 auto; padding: 1em;">
+    <div class="load">        
+        <div class="ichi 一" style="display: flex; justify-content: center; align-items: center; flex-direction: column; height: 100vh; text-align: center;">
+            <h1 class="" style="margin: 0.5em;"><br></h1>
+            <img src="images/cock.gif" alt="Monkey" style="height: 300px; display: block; margin: 0 auto; padding: 1em;">
+        </div>
+        <meta http-equiv="refresh" content="5; URL=desktop" />
     </div>
-    <meta http-equiv="refresh" content="5; URL=desktop" />
+
+    <!-- Initialize Particles.js -->
+    <script>
+        particlesJS('particles-js', {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#ffffff"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    }
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": true
+                },
+                "size": {
+                    "value": 3,
+                    "random": true
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#ffffff",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 6
+                }
+            },
+            "interactivity": {
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "repulse"
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
 
 </body>
-
 </html>
