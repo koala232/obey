@@ -61,11 +61,15 @@
             }
         }
 
-        /* Ensure the audio controls are properly positioned */
+        /* Restore the original positioning of the audio controls */
         .audwin {
             max-width: 650px;
-            margin: 0 auto;
-            padding-top: 20px;
+            margin: 20px auto;
+            padding: 15px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 8px;
+            color: white;
+            text-align: center;
         }
 
         .audio-controls {
@@ -79,16 +83,14 @@
         }
 
         #songInfo {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 14px;
-            color: white;
+            display: inline-block;
+            margin-bottom: 10px;
         }
 
         #artist,
         #songTitle {
             font-weight: bold;
+            display: inline;
         }
     </style>
 </head>
@@ -96,15 +98,14 @@
 <body>
 
     <div class="ascii">
-        <pre>
-$$$$$$\  $$$$$$$\  $$$$$$$$\  $$\     $$\ 
+ $$$$$$\  $$$$$$$\  $$$$$$$$\ $$\     $$\ 
 $$  __$$\ $$  __$$\ $$  _____|\$$\   $$  |
 $$ /  $$ |$$ |  $$ |$$ |       \$$\ $$  / 
 $$ |  $$ |$$$$$$$\ |$$$$$\      \$$$$  /  
 $$ |  $$ |$$  __$$\ $$  __|      \$$  /   
 $$ |  $$ |$$ |  $$ |$$ |          $$ |    
-$$$$$$  |$$$$$$$  |$$$$$$$$\      $$ |    
-\______/ \_______/ \________|     \__| 
+ $$$$$$  |$$$$$$$  |$$$$$$$$\     $$ |    
+ \______/ \_______/ \________|    \__| 
         </pre>
     </div>
 
