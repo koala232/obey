@@ -17,11 +17,6 @@ var audioFiles = [
         song: "Harakiri"
         },
         {
-        src: "https://files.catbox.moe/mjbxka.mp3",
-        artist: "Ghostemane",
-        song: "FairWeatherFanz"
-        },
-        {
         src: "https://files.catbox.moe/0c56ti.mp3",
         artist: "Afourteen",
         song: "USA"
@@ -30,11 +25,6 @@ var audioFiles = [
         src: "https://files.catbox.moe/62px76.mp3",
         artist: "Broly500!",
         song: "gave_her_soul/SUPER SLATT++ leak (icytwat Remix)"
-        },
-        {
-        src: "https://files.catbox.moe/skikkm.mp3",
-        artist: "Yeat",
-        song: "Wat U Want 2"
         },
         {
         src: "https://files.catbox.moe/bnm7v9.mp3",
