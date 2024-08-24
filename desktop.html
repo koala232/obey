@@ -34,12 +34,17 @@
             display: none;
         }
         .maximized {
-            width: 100%;
-            height: 100vh;
+            width: 95%; /* Add padding to the edges */
+            height: 90vh; /* Adjust height to leave room for UI elements */
             position: fixed;
-            top: 0;
-            left: 0;
+            top: 50%; /* Center vertically */
+            left: 50%; /* Center horizontally */
+            transform: translate(-50%, -50%);
             margin: 0;
+            padding: 20px; /* Padding inside the window */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Add shadow for depth */
+            transition: all 0.3s ease; /* Smooth transition */
+            overflow: auto; /* Handle overflow */
         }
         .restore-text {
             display: none;
