@@ -41,6 +41,32 @@
             left: 0;
             margin: 0;
         }
+        .restore-text {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 48px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.75);
+            cursor: pointer;
+        }
+        .restore-text.glow {
+            animation: glow 1.5s infinite;
+        }
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.75), 0 0 20px rgba(255, 255, 255, 0.5);
+            }
+            50% {
+                text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 0.75);
+            }
+            100% {
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.75), 0 0 20px rgba(255, 255, 255, 0.5);
+            }
+        }
     </style>
 </head>
 <body>
@@ -83,6 +109,9 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
             </div>
         </div>
     </div>
+
+    <!-- Glowing Text to Restore Minimized/Closed Window -->
+    <div id="restoreText" class="restore-text glow">obey</div>
     
     <div class="audwin" style="max-width: 650px">
       <div class="audio-controls">
@@ -100,12 +129,18 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
     <script src="./js/mzik.js"></script>
 
     <script>
+        // Function to hide window and show glowing text
+        function hideWindowAndShowRestoreText() {
+            document.getElementById('window').style.display = 'none';
+            document.getElementById('restoreText').style.display = 'block';
+        }
+
         document.getElementById('closeBtn').addEventListener('click', function() {
-            document.getElementById('window').classList.add('hidden');
+            hideWindowAndShowRestoreText();
         });
 
         document.getElementById('minimizeBtn').addEventListener('click', function() {
-            document.getElementById('window').style.display = 'none';
+            hideWindowAndShowRestoreText();
         });
 
         document.getElementById('maximizeBtn').addEventListener('click', function() {
@@ -115,6 +150,11 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
             } else {
                 windowElement.classList.add('maximized');
             }
+        });
+
+        document.getElementById('restoreText').addEventListener('click', function() {
+            document.getElementById('window').style.display = 'block';
+            document.getElementById('restoreText').style.display = 'none';
         });
     </script>
 </body>
