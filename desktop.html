@@ -60,8 +60,8 @@
             }
         }
 
-        /* Mouse effect styles */
-        .custom-cursor {
+        /* Remove custom cursor styles */
+        /* .custom-cursor {
             position: fixed;
             width: 20px;
             height: 20px;
@@ -70,16 +70,23 @@
             pointer-events: none;
             mix-blend-mode: difference;
             transform: translate(-50%, -50%);
-            transition: background 0.2s ease;
+            transition: background 0.2s ease, transform 0.2s ease;
         }
         .custom-cursor:hover {
             background: rgba(255, 255, 255, 1);
+            transform: scale(1.5);
         }
+        .custom-cursor.expanded {
+            width: 30px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.6);
+            transform: scale(1.8);
+        } */
     </style>
 </head>
 <body>
-    <!-- Custom cursor element -->
-    <div id="customCursor" class="custom-cursor"></div>
+    <!-- Remove custom cursor element -->
+    <!-- <div id="customCursor" class="custom-cursor"></div> -->
 
     <div class="ascii">
         <pre>
@@ -164,12 +171,20 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
             document.getElementById('restoreText').style.display = 'none';
         });
 
-        // Custom cursor movement
-        document.addEventListener('mousemove', function(event) {
-            const cursor = document.getElementById('customCursor');
-            cursor.style.left = `${event.clientX}px`;
-            cursor.style.top = `${event.clientY}px`;
-        });
+        // Remove custom cursor movement JavaScript
+        // document.addEventListener('mousemove', function(event) {
+        //     const cursor = document.getElementById('customCursor');
+        //     cursor.style.left = `${event.clientX}px`;
+        //     cursor.style.top = `${event.clientY}px`;
+        // });
+        // document.addEventListener('mouseover', function(event) {
+        //     if (event.target !== cursor) {
+        //         cursor.classList.add('expanded');
+        //     }
+        // });
+        // document.addEventListener('mouseout', function(event) {
+        //     cursor.classList.remove('expanded');
+        // });
     </script>
 </body>
 </html>
