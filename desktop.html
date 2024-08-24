@@ -8,6 +8,7 @@
     <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>
     <title>obey</title>
     <style>
+        /* Existing styles */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -62,6 +63,19 @@
                 text-shadow: 0 0 10px rgba(255, 215, 0, 0.75), 
                              0 0 20px rgba(255, 215, 0, 0.5);
             }
+        }
+
+        /* Custom Cursor Styles */
+        .custom-cursor {
+            position: fixed;
+            width: 20px; /* Adjust size as needed */
+            height: 20px; /* Adjust size as needed */
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.7), rgba(255, 215, 0, 0));
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 9999; /* Ensure it's above other elements */
+            transition: transform 0.1s ease;
         }
     </style>
 </head>
@@ -123,32 +137,42 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
         </div>
         <audio id="audio"></audio>
         <script src="./js/mzik.js"></script>
-
-        <script>
-            // Function to hide window and show glowing text
-            function hideWindowAndShowRestoreText() {
-                document.getElementById('window').style.display = 'none';
-                document.getElementById('restoreText').style.display = 'block';
-            }
-
-            document.getElementById('closeBtn').addEventListener('click', function() {
-                hideWindowAndShowRestoreText();
-            });
-
-            document.getElementById('minimizeBtn').addEventListener('click', function() {
-                hideWindowAndShowRestoreText();
-            });
-
-            // Prevent the Maximize button from doing anything
-            document.getElementById('maximizeBtn').addEventListener('click', function(event) {
-                event.preventDefault(); // Do nothing when the button is clicked
-            });
-
-            document.getElementById('restoreText').addEventListener('click', function() {
-                document.getElementById('window').style.display = 'block';
-                document.getElementById('restoreText').style.display = 'none';
-            });
-        </script>
     </div>
+
+    <!-- Custom Cursor Element -->
+    <div class="custom-cursor"></div>
+
+    <script>
+        // Function to hide window and show glowing text
+        function hideWindowAndShowRestoreText() {
+            document.getElementById('window').style.display = 'none';
+            document.getElementById('restoreText').style.display = 'block';
+        }
+
+        document.getElementById('closeBtn').addEventListener('click', function() {
+            hideWindowAndShowRestoreText();
+        });
+
+        document.getElementById('minimizeBtn').addEventListener('click', function() {
+            hideWindowAndShowRestoreText();
+        });
+
+        // Prevent the Maximize button from doing anything
+        document.getElementById('maximizeBtn').addEventListener('click', function(event) {
+            event.preventDefault(); // Do nothing when the button is clicked
+        });
+
+        document.getElementById('restoreText').addEventListener('click', function() {
+            document.getElementById('window').style.display = 'block';
+            document.getElementById('restoreText').style.display = 'none';
+        });
+
+        // JavaScript to move the custom cursor
+        document.addEventListener('mousemove', function(e) {
+            var cursor = document.querySelector('.custom-cursor');
+            cursor.style.left = e.pageX + 'px';
+            cursor.style.top = e.pageY + 'px';
+        });
+    </script>
 </body>
 </html>
