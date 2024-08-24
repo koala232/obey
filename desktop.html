@@ -41,8 +41,9 @@
             transform: translate(-50%, -50%);
             font-size: 48px;
             font-weight: bold;
-            color: white;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.75);
+            color: #FFD700; /* Golden color */
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.75), 
+                         0 0 20px rgba(255, 215, 0, 0.5); /* Golden glow effect */
             cursor: pointer;
         }
         .restore-text.glow {
@@ -50,13 +51,16 @@
         }
         @keyframes glow {
             0% {
-                text-shadow: 0 0 10px rgba(255, 255, 255, 0.75), 0 0 20px rgba(255, 255, 255, 0.5);
+                text-shadow: 0 0 10px rgba(255, 215, 0, 0.75), 
+                             0 0 20px rgba(255, 215, 0, 0.5);
             }
             50% {
-                text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 0.75);
+                text-shadow: 0 0 20px rgba(255, 215, 0, 1), 
+                             0 0 30px rgba(255, 215, 0, 0.75);
             }
             100% {
-                text-shadow: 0 0 10px rgba(255, 255, 255, 0.75), 0 0 20px rgba(255, 255, 255, 0.5);
+                text-shadow: 0 0 10px rgba(255, 215, 0, 0.75), 
+                             0 0 20px rgba(255, 215, 0, 0.5);
             }
         }
     </style>
@@ -106,44 +110,45 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
     <div id="restoreText" class="restore-text glow">obey</div>
     
     <div class="audwin" style="max-width: 650px">
-      <div class="audio-controls">
-        <p style="font-size:13px;margin-bottom:5px;">Now Playing:</p>
-          <div id="songInfo" class="text-center">
-              <div id="artist">Artist</div>&nbsp;-&nbsp;<div id="songTitle">Song</div>
-          </div>
-          <div class="controls" style="margin-top:10px;margin-bottom:7px;">
-              <a onclick="previousAudio()" style="margin-right:10px;"><img src="./icon/back.png"></a>
-              <a id="playPauseButton" onclick="togglePlayPause()" style="margin-right:10px;"><img src="./icon/pause.png"></a>
-              <a onclick="nextAudio()"><img src="./icon/next.png"></a>
-          </div>
-      </div>
-    <audio id="audio"></audio>
-    <script src="./js/mzik.js"></script>
+        <div class="audio-controls">
+            <p style="font-size:13px;margin-bottom:5px;">Now Playing:</p>
+            <div id="songInfo" class="text-center">
+                <div id="artist">Artist</div>&nbsp;-&nbsp;<div id="songTitle">Song</div>
+            </div>
+            <div class="controls" style="margin-top:10px;margin-bottom:7px;">
+                <a onclick="previousAudio()" style="margin-right:10px;"><img src="./icon/back.png"></a>
+                <a id="playPauseButton" onclick="togglePlayPause()" style="margin-right:10px;"><img src="./icon/pause.png"></a>
+                <a onclick="nextAudio()"><img src="./icon/next.png"></a>
+            </div>
+        </div>
+        <audio id="audio"></audio>
+        <script src="./js/mzik.js"></script>
 
-    <script>
-        // Function to hide window and show glowing text
-        function hideWindowAndShowRestoreText() {
-            document.getElementById('window').style.display = 'none';
-            document.getElementById('restoreText').style.display = 'block';
-        }
+        <script>
+            // Function to hide window and show glowing text
+            function hideWindowAndShowRestoreText() {
+                document.getElementById('window').style.display = 'none';
+                document.getElementById('restoreText').style.display = 'block';
+            }
 
-        document.getElementById('closeBtn').addEventListener('click', function() {
-            hideWindowAndShowRestoreText();
-        });
+            document.getElementById('closeBtn').addEventListener('click', function() {
+                hideWindowAndShowRestoreText();
+            });
 
-        document.getElementById('minimizeBtn').addEventListener('click', function() {
-            hideWindowAndShowRestoreText();
-        });
+            document.getElementById('minimizeBtn').addEventListener('click', function() {
+                hideWindowAndShowRestoreText();
+            });
 
-        // Prevent the Maximize button from doing anything
-        document.getElementById('maximizeBtn').addEventListener('click', function(event) {
-            event.preventDefault(); // Do nothing when the button is clicked
-        });
+            // Prevent the Maximize button from doing anything
+            document.getElementById('maximizeBtn').addEventListener('click', function(event) {
+                event.preventDefault(); // Do nothing when the button is clicked
+            });
 
-        document.getElementById('restoreText').addEventListener('click', function() {
-            document.getElementById('window').style.display = 'block';
-            document.getElementById('restoreText').style.display = 'none';
-        });
-    </script>
+            document.getElementById('restoreText').addEventListener('click', function() {
+                document.getElementById('window').style.display = 'block';
+                document.getElementById('restoreText').style.display = 'none';
+            });
+        </script>
+    </div>
 </body>
 </html>
