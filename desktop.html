@@ -10,24 +10,36 @@
     <style>
         .container {
             max-width: 1200px;
-            margin: 0 auto;display:flex;
+            margin: 0 auto;
+            display: flex;
             justify-content: center;
             align-items: center;
         }
         .ascii pre {
-            background-color:transparent;
-            border:none;
+            background-color: transparent;
+            border: none;
             color: white;
-            text-align:center;
+            text-align: center;
             padding: 10px 0;
         }
         .ascii > * {
-          position:relative;
-          top:25px;
+            position: relative;
+            top: 25px;
         }
         .content {
             padding: 20px;
             min-height: 500px;
+        }
+        .hidden {
+            display: none;
+        }
+        .maximized {
+            width: 100%;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            margin: 0;
         }
     </style>
 </head>
@@ -48,13 +60,13 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
     <div class="container">
         <div class="content">
             <div class="profcont">
-                <div class="window profwin glass active">
+                <div id="window" class="window profwin glass active">
                     <div class="title-bar">
                         <div class="title-bar-text">obey.exe</div>
                         <div class="title-bar-controls">
-                            <button aria-label="Minimize"></button>
-                            <button aria-label="Maximize"></button>
-                            <button aria-label="Close"></button>
+                            <button aria-label="Minimize" id="minimizeBtn"></button>
+                            <button aria-label="Maximize" id="maximizeBtn"></button>
+                            <button aria-label="Close" id="closeBtn"></button>
                         </div>
                     </div>
                     <div class="window-body profbody has-space">
@@ -88,12 +100,22 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
     <script src="./js/mzik.js"></script>
 
     <script>
-      window.addEventListener('message', function(event) {
-          if (event.data === 'playMusic') {
-              document.getElementById('overlays').style.display = 'none';
-              playMedia();
-          }
-      });
-  </script>
+        document.getElementById('closeBtn').addEventListener('click', function() {
+            document.getElementById('window').classList.add('hidden');
+        });
+
+        document.getElementById('minimizeBtn').addEventListener('click', function() {
+            document.getElementById('window').style.display = 'none';
+        });
+
+        document.getElementById('maximizeBtn').addEventListener('click', function() {
+            var windowElement = document.getElementById('window');
+            if (windowElement.classList.contains('maximized')) {
+                windowElement.classList.remove('maximized');
+            } else {
+                windowElement.classList.add('maximized');
+            }
+        });
+    </script>
 </body>
 </html>
