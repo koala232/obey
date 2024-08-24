@@ -33,19 +33,6 @@
         .hidden {
             display: none;
         }
-        .maximized {
-            width: 95%; /* Add padding to the edges */
-            height: 90vh; /* Adjust height to leave room for UI elements */
-            position: fixed;
-            top: 50%; /* Center vertically */
-            left: 50%; /* Center horizontally */
-            transform: translate(-50%, -50%);
-            margin: 0;
-            padding: 20px; /* Padding inside the window */
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Add shadow for depth */
-            transition: all 0.3s ease; /* Smooth transition */
-            overflow: auto; /* Handle overflow */
-        }
         .restore-text {
             display: none;
             position: fixed;
@@ -148,13 +135,9 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
             hideWindowAndShowRestoreText();
         });
 
-        document.getElementById('maximizeBtn').addEventListener('click', function() {
-            var windowElement = document.getElementById('window');
-            if (windowElement.classList.contains('maximized')) {
-                windowElement.classList.remove('maximized');
-            } else {
-                windowElement.classList.add('maximized');
-            }
+        // Prevent the Maximize button from doing anything
+        document.getElementById('maximizeBtn').addEventListener('click', function(event) {
+            event.preventDefault(); // Do nothing when the button is clicked
         });
 
         document.getElementById('restoreText').addEventListener('click', function() {
