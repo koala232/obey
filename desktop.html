@@ -41,55 +41,30 @@
             transform: translate(-50%, -50%);
             font-size: 48px;
             font-weight: bold;
-            color: white;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.75);
+            color: #ff0000; /* Bright red color */
+            text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 15px #ff0000, 0 0 20px #ff0000, 0 0 25px #ff0000;
             cursor: pointer;
+            animation: flicker 1.5s infinite alternate;
         }
-        .restore-text.glow {
-            animation: glow 1.5s infinite;
+        @keyframes flicker {
+            0% { opacity: 1; }
+            50% { opacity: 0.8; }
+            100% { opacity: 1; }
         }
-        @keyframes glow {
-            0% {
-                text-shadow: 0 0 10px rgba(255, 255, 255, 0.75), 0 0 20px rgba(255, 255, 255, 0.5);
-            }
-            50% {
-                text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 0.75);
-            }
-            100% {
-                text-shadow: 0 0 10px rgba(255, 255, 255, 0.75), 0 0 20px rgba(255, 255, 255, 0.5);
-            }
+        /* Additional glow effect for text */
+        .rich-text {
+            font-family: Arial, sans-serif; /* Replace with the site's actual font if known */
+            font-size: 24px; /* Adjust size as necessary */
+            font-weight: bold;
+            color: #ff0000; /* Bright red color */
+            text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 15px #ff0000, 0 0 20px #ff0000, 0 0 25px #ff0000;
+            animation: flicker 1.5s infinite alternate;
         }
-
-        /* Remove custom cursor styles */
-        /* .custom-cursor {
-            position: fixed;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.8);
-            pointer-events: none;
-            mix-blend-mode: difference;
-            transform: translate(-50%, -50%);
-            transition: background 0.2s ease, transform 0.2s ease;
-        }
-        .custom-cursor:hover {
-            background: rgba(255, 255, 255, 1);
-            transform: scale(1.5);
-        }
-        .custom-cursor.expanded {
-            width: 30px;
-            height: 30px;
-            background: rgba(255, 255, 255, 0.6);
-            transform: scale(1.8);
-        } */
     </style>
 </head>
 <body>
-    <!-- Remove custom cursor element -->
-    <!-- <div id="customCursor" class="custom-cursor"></div> -->
-
     <div class="ascii">
-        <pre>
+        <pre class="rich-text">
  $$$$$$\  $$$$$$$\  $$$$$$$$\ $$\     $$\ 
 $$  __$$\ $$  __$$\ $$  _____|\$$\   $$  |
 $$ /  $$ |$$ |  $$ |$$ |       \$$\ $$  / 
@@ -129,7 +104,7 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
     </div>
 
     <!-- Glowing Text to Restore Minimized/Closed Window -->
-    <div id="restoreText" class="restore-text glow">obey</div>
+    <div id="restoreText" class="restore-text">obey</div>
     
     <div class="audwin" style="max-width: 650px">
       <div class="audio-controls">
@@ -170,21 +145,6 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
             document.getElementById('window').style.display = 'block';
             document.getElementById('restoreText').style.display = 'none';
         });
-
-        // Remove custom cursor movement JavaScript
-        // document.addEventListener('mousemove', function(event) {
-        //     const cursor = document.getElementById('customCursor');
-        //     cursor.style.left = `${event.clientX}px`;
-        //     cursor.style.top = `${event.clientY}px`;
-        // });
-        // document.addEventListener('mouseover', function(event) {
-        //     if (event.target !== cursor) {
-        //         cursor.classList.add('expanded');
-        //     }
-        // });
-        // document.addEventListener('mouseout', function(event) {
-        //     cursor.classList.remove('expanded');
-        // });
     </script>
 </body>
 </html>
