@@ -59,35 +59,9 @@
                 text-shadow: 0 0 10px rgba(255, 255, 255, 0.75), 0 0 20px rgba(255, 255, 255, 0.5);
             }
         }
-
-        /* Remove custom cursor styles */
-        /* .custom-cursor {
-            position: fixed;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.8);
-            pointer-events: none;
-            mix-blend-mode: difference;
-            transform: translate(-50%, -50%);
-            transition: background 0.2s ease, transform 0.2s ease;
-        }
-        .custom-cursor:hover {
-            background: rgba(255, 255, 255, 1);
-            transform: scale(1.5);
-        }
-        .custom-cursor.expanded {
-            width: 30px;
-            height: 30px;
-            background: rgba(255, 255, 255, 0.6);
-            transform: scale(1.8);
-        } */
     </style>
 </head>
 <body>
-    <!-- Remove custom cursor element -->
-    <!-- <div id="customCursor" class="custom-cursor"></div> -->
-
     <div class="ascii">
         <pre>
  $$$$$$\  $$$$$$$\  $$$$$$$$\ $$\     $$\ 
@@ -118,7 +92,7 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
                             <img src="./images/obey.jpg" style="height:120px;border-radius:5px;">
                         </a>
                         <h5><strong>obey</strong></h5>
-                        <p>IZ</p>
+                        <p><a href="https://t.me/izintelligencezone" target="_blank">IZ</a></p>
                         <a href="https://t.me/a22cw" style="z-index:9999!important;" target="_blank">
                             <img style="height:25px;margin-top:-50px;" src="./icon/telegram.png">
                         </a>
@@ -128,7 +102,6 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
         </div>
     </div>
 
-    <!-- Glowing Text to Restore Minimized/Closed Window -->
     <div id="restoreText" class="restore-text glow">obey</div>
     
     <div class="audwin" style="max-width: 650px">
@@ -147,7 +120,6 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
     <script src="./js/mzik.js"></script>
 
     <script>
-        // Function to hide window and show glowing text
         function hideWindowAndShowRestoreText() {
             document.getElementById('window').style.display = 'none';
             document.getElementById('restoreText').style.display = 'block';
@@ -161,30 +133,14 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
             hideWindowAndShowRestoreText();
         });
 
-        // Prevent the Maximize button from doing anything
         document.getElementById('maximizeBtn').addEventListener('click', function(event) {
-            event.preventDefault(); // Do nothing when the button is clicked
+            event.preventDefault();
         });
 
         document.getElementById('restoreText').addEventListener('click', function() {
             document.getElementById('window').style.display = 'block';
             document.getElementById('restoreText').style.display = 'none';
         });
-
-        // Remove custom cursor movement JavaScript
-        // document.addEventListener('mousemove', function(event) {
-        //     const cursor = document.getElementById('customCursor');
-        //     cursor.style.left = ${event.clientX}px;
-        //     cursor.style.top = ${event.clientY}px;
-        // });
-        // document.addEventListener('mouseover', function(event) {
-        //     if (event.target !== cursor) {
-        //         cursor.classList.add('expanded');
-        //     }
-        // });
-        // document.addEventListener('mouseout', function(event) {
-        //     cursor.classList.remove('expanded');
-        // });
     </script>
 </body>
 </html>
