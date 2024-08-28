@@ -2,9 +2,9 @@ var audio = document.getElementById("audio");
 var playPauseButton = document.getElementById("playPauseButton");
 var audioFiles = [
         {
-        src: "https://files.catbox.moe/q17cu1.mp3",
-        artist: "Offset, Metro Boomin",
-        song: "Ric Flair Drip (with Metro Boomin)"
+        src: "https://files.catbox.moe/z9753a.mp3",
+        artist: "YASIN BYN",
+        song: "TRAKTEN"
         },
 ];
 
