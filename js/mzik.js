@@ -2,15 +2,10 @@ var audio = document.getElementById("audio");
 var playPauseButton = document.getElementById("playPauseButton");
 var audioFiles = [
         {
-        src: "https://files.catbox.moe/z9753a.mp3",
-        artist: "YASIN BYN",
-        song: "TRAKTEN"
-        },
-        {
-        src: "https://files.catbox.moe/y16ml7.mp3",
-        artist: "YASIN BYN",
-        song: "See Me Shine"
-        },        
+        src: "https://files.catbox.moe/f5d4c6.mp3",
+        artist: "The Rah Band",
+        song: "Messages from the Stars"
+        },   
 ];
 
 var artist = document.getElementById("artist");
