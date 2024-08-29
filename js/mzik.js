@@ -6,6 +6,11 @@ var audioFiles = [
         artist: "YASIN BYN",
         song: "TRAKTEN"
         },
+        {
+        src: "https://files.catbox.moe/y16ml7.mp3",
+        artist: "YASIN BYN",
+        song: "See Me Shine"
+        },        
 ];
 
 var artist = document.getElementById("artist");
