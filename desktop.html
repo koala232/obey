@@ -59,6 +59,30 @@
                 text-shadow: 0 0 10px rgba(255, 255, 255, 0.75), 0 0 20px rgba(255, 255, 255, 0.5);
             }
         }
+        /* Error modal styles */
+        .error-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: red;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+        .error-modal button {
+            background-color: white;
+            color: red;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
@@ -119,22 +143,32 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
     <audio id="audio"></audio>
     <script src="./js/mzik.js"></script>
 
+    <!-- Error Modal -->
+    <div id="errorModal" class="error-modal">
+        <p>Error: Action not allowed!</p>
+        <button onclick="closeErrorModal()">Close</button>
+    </div>
+
     <script>
-        function hideWindowAndShowRestoreText() {
-            document.getElementById('window').style.display = 'none';
-            document.getElementById('restoreText').style.display = 'block';
+        function showErrorModal() {
+            document.getElementById('errorModal').style.display = 'block';
+        }
+
+        function closeErrorModal() {
+            document.getElementById('errorModal').style.display = 'none';
         }
 
         document.getElementById('closeBtn').addEventListener('click', function() {
-            hideWindowAndShowRestoreText();
+            showErrorModal();
         });
 
         document.getElementById('minimizeBtn').addEventListener('click', function() {
-            hideWindowAndShowRestoreText();
+            showErrorModal();
         });
 
         document.getElementById('maximizeBtn').addEventListener('click', function(event) {
             event.preventDefault();
+            showErrorModal();
         });
 
         document.getElementById('restoreText').addEventListener('click', function() {
