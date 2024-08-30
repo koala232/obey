@@ -18,7 +18,7 @@
         .ascii pre {
             background-color: transparent;
             border: none;
-            color: white;
+            color: black; /* Changed color to black */
             text-align: center;
             padding: 10px 0;
         }
@@ -41,8 +41,8 @@
             transform: translate(-50%, -50%);
             font-size: 48px;
             font-weight: bold;
-            color: white;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.75);
+            color: black; /* Changed color to black */
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
             cursor: pointer;
         }
         .restore-text.glow {
@@ -50,16 +50,15 @@
         }
         @keyframes glow {
             0% {
-                text-shadow: 0 0 10px rgba(255, 255, 255, 0.75), 0 0 20px rgba(255, 255, 255, 0.5);
+                text-shadow: 0 0 10px rgba(0, 0, 0, 0.75), 0 0 20px rgba(0, 0, 0, 0.5);
             }
             50% {
-                text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 0.75);
+                text-shadow: 0 0 20px rgba(0, 0, 0, 1), 0 0 30px rgba(0, 0, 0, 0.75);
             }
             100% {
-                text-shadow: 0 0 10px rgba(255, 255, 255, 0.75), 0 0 20px rgba(255, 255, 255, 0.5);
+                text-shadow: 0 0 10px rgba(0, 0, 0, 0.75), 0 0 20px rgba(0, 0, 0, 0.5);
             }
         }
-        /* Error window styles to match Windows XP */
         .error-modal {
             display: none;
             position: fixed;
@@ -85,7 +84,7 @@
         }
         .error-title-bar .title-bar-text {
             margin-left: 5px;
-            color: white;
+            color: black; /* Changed color to black */
             font-weight: bold;
         }
         .error-title-bar .title-bar-controls button {
