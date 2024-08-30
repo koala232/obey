@@ -74,6 +74,30 @@
         .restore-text.glow {
             animation: rainbow 2s infinite, fadeIn 1s ease-in-out;
         }
+
+        .message-box {
+            display: none;
+            position: fixed;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 1em;
+            border: 1px solid #ccc;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            cursor: move;
+        }
+        .message-box button {
+            margin-top: 1em;
+        }
+
+        .message-box .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: move;
+        }
     </style>
 </head>
 <body>
@@ -117,6 +141,16 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
         </div>
     </div>
 
+    <!-- Message Box -->
+    <div class="message-box" id="messageBox">
+        <div class="header">
+            <div>Message Box</div>
+            <button onclick="closeMessageBox()">X</button>
+        </div>
+        <p>This is a message box!</p>
+        <button onclick="closeMessageBox()">Close</button>
+    </div>
+
     <div id="restoreText" class="restore-text glow rainbow-text">obey</div>
     
     <div class="audwin" style="max-width: 650px">
@@ -135,9 +169,63 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
     <script src="./js/mzik.js"></script>
 
     <script>
+        // Function to show the message box
+        function showMessageBox() {
+            document.getElementById('messageBox').style.display = 'block';
+        }
+
+        // Function to close the message box
+        function closeMessageBox() {
+            document.getElementById('messageBox').style.display = 'none';
+        }
+
+        // Function to make an element draggable
+        function makeDraggable(element) {
+            let offsetX, offsetY, isDragging = false;
+
+            const onMouseDown = (event) => {
+                isDragging = true;
+                offsetX = event.clientX - element.getBoundingClientRect().left;
+                offsetY = event.clientY - element.getBoundingClientRect().top;
+                document.addEventListener('mousemove', onMouseMove);
+                document.addEventListener('mouseup', onMouseUp);
+            };
+
+            const onMouseMove = (event) => {
+                if (isDragging) {
+                    element.style.left = `${event.clientX - offsetX}px`;
+                    element.style.top = `${event.clientY - offsetY}px`;
+                }
+            };
+
+            const onMouseUp = () => {
+                isDragging = false;
+                document.removeEventListener('mousemove', onMouseMove);
+                document.removeEventListener('mouseup', onMouseUp);
+            };
+
+            element.addEventListener('mousedown', onMouseDown);
+        }
+
+        // Make the message box draggable
+        makeDraggable(document.getElementById('messageBox'));
+
+        // Event listeners for buttons
+        document.getElementById('minimizeBtn').addEventListener('click', showMessageBox);
+        document.getElementById('maximizeBtn').addEventListener('click', showMessageBox);
+        document.getElementById('closeBtn').addEventListener('click', showMessageBox);
+
+        // Restore text click event
         document.getElementById('restoreText').addEventListener('click', function() {
             document.getElementById('window').style.display = 'block';
             document.getElementById('restoreText').style.display = 'none';
+        });
+
+        // Fullscreen toggle
+        document.addEventListener('fullscreenchange', function() {
+            if (document.fullscreenElement) {
+                showMessageBox();
+            }
         });
     </script>
 </body>
