@@ -99,52 +99,6 @@
         #newWindow p {
             color: black;
         }
-
-        /* Style the title bar for the new window */
-        #newWindow .title-bar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 5px;
-            background: #333;
-            color: #fff;
-            border-radius: 8px 8px 0 0;
-        }
-
-        #newWindow .title-bar-text {
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        #newWindow .title-bar-controls {
-            display: flex;
-        }
-
-        #newWindow .title-bar-controls button {
-            width: 16px;
-            height: 16px;
-            border: none;
-            background: #555;
-            border-radius: 50%;
-            margin: 0 2px;
-            cursor: pointer;
-        }
-
-        #newWindow .title-bar-controls button:hover {
-            background: #777;
-        }
-
-        #newWindow .title-bar-controls button[aria-label="Minimize"] {
-            background: #f0ad4e;
-        }
-
-        #newWindow .title-bar-controls button[aria-label="Maximize"] {
-            background: #5bc0de;
-        }
-
-        #newWindow .title-bar-controls button[aria-label="Close"] {
-            background: #d9534f;
-        }
     </style>
 </head>
 <body>
@@ -213,9 +167,9 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
         </div>
 
         <div class="title-bar-controls">
-          <button aria-label="Minimize" id="minimizeBtnNew"></button>
-          <button aria-label="Maximize" id="maximizeBtnNew"></button>
-          <button aria-label="Close" id="closeBtnNew"></button>
+          <button aria-label="Minimize" onclick="hideNewWindow()"></button>
+          <button aria-label="Maximize" onclick="hideNewWindow()"></button>
+          <button aria-label="Close" onclick="hideNewWindow()"></button>
         </div>
       </div>
       <div class="window-body has-space">
@@ -251,15 +205,12 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
             showNewWindow();
         });
 
-        document.getElementById('minimizeBtnNew').addEventListener('click', function() {
+        // Event listeners for OK and Cancel buttons
+        document.getElementById('okButton').addEventListener('click', function() {
             hideNewWindow();
         });
 
-        document.getElementById('maximizeBtnNew').addEventListener('click', function() {
-            hideNewWindow();
-        });
-
-        document.getElementById('closeBtnNew').addEventListener('click', function() {
+        document.getElementById('cancelButton').addEventListener('click', function() {
             hideNewWindow();
         });
 
@@ -274,15 +225,6 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
             if (document.fullscreenElement) {
                 showNewWindow();
             }
-        });
-
-        // Event listeners for OK and Cancel buttons
-        document.getElementById('okButton').addEventListener('click', function() {
-            hideNewWindow();
-        });
-
-        document.getElementById('cancelButton').addEventListener('click', function() {
-            hideNewWindow();
         });
     </script>
 </body>
