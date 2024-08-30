@@ -8,7 +8,6 @@
     <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>
     <title>obey</title>
     <style>
-        /* Existing styles */
         @keyframes rainbow {
             0% { color: red; }
             14.28% { color: orange; }
@@ -76,7 +75,6 @@
             animation: rainbow 2s infinite, fadeIn 1s ease-in-out;
         }
 
-        /* Center the message box */
         .new-window {
             position: fixed; /* Ensure it's fixed in place */
             top: 50%; /* Center vertically */
@@ -88,15 +86,14 @@
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             padding: 16px;
+            transition: transform 0.2s ease-out; /* Smooth transition for the transform property */
         }
 
-        /* Transparent background for the message box content */
         #newWindow .window-body {
             background: rgba(255, 255, 255, 0); /* Transparent background */
             padding: 0; /* Remove extra padding if needed */
         }
 
-        /* Ensure the text inside is black */
         #newWindow p {
             color: black;
         }
@@ -235,9 +232,11 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
         // Function to initialize dragging
         function initDrag(e) {
             isDragging = true;
-            // Calculate the offset between the mouse position and the top-left corner of the newWindow
-            offsetX = e.clientX - newWindow.getBoundingClientRect().left;
-            offsetY = e.clientY - newWindow.getBoundingClientRect().top;
+            // Calculate the offset between the mouse position and the newWindow's current position
+            const rect = newWindow.getBoundingClientRect();
+            offsetX = e.clientX - rect.left;
+            offsetY = e.clientY - rect.top;
+
             // Attach event listeners to handle dragging
             document.addEventListener('mousemove', onMouseMove);
             document.addEventListener('mouseup', onMouseUp);
@@ -246,9 +245,8 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
         // Function to handle dragging
         function onMouseMove(e) {
             if (isDragging) {
-                // Update the position of newWindow
-                newWindow.style.left = `${e.clientX - offsetX}px`;
-                newWindow.style.top = `${e.clientY - offsetY}px`;
+                // Use transform for smooth positioning
+                newWindow.style.transform = `translate(${e.clientX - offsetX}px, ${e.clientY - offsetY}px)`;
             }
         }
 
