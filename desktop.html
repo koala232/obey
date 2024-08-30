@@ -99,6 +99,68 @@
         #newWindow p {
             color: black;
         }
+
+        /* Style the title bar for the new window */
+        #newWindow .title-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 5px;
+            background: #333;
+            color: #fff;
+            border-radius: 8px 8px 0 0;
+        }
+
+        #newWindow .title-bar-text {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        #newWindow .title-bar-controls {
+            display: flex;
+        }
+
+        /* Buttons style for the new window */
+        #newWindow .title-bar-controls button {
+            width: 16px;
+            height: 16px;
+            border: none;
+            border-radius: 50%;
+            margin: 0 2px;
+            cursor: pointer;
+            background: #555; /* Default color for all buttons */
+        }
+
+        /* Specific button colors */
+        #newWindow .title-bar-controls button[aria-label="Minimize"] {
+            background: #f0ad4e; /* Minimize button color */
+        }
+
+        #newWindow .title-bar-controls button[aria-label="Maximize"] {
+            background: #5bc0de; /* Maximize button color */
+        }
+
+        #newWindow .title-bar-controls button[aria-label="Close"] {
+            background: #d9534f; /* Close button color */
+        }
+
+        /* Hover effects */
+        #newWindow .title-bar-controls button:hover {
+            background: #777; /* Hover color for all buttons */
+        }
+
+        /* Specific hover effects */
+        #newWindow .title-bar-controls button[aria-label="Minimize"]:hover {
+            background: #ec971f; /* Minimize button hover color */
+        }
+
+        #newWindow .title-bar-controls button[aria-label="Maximize"]:hover {
+            background: #31b0d5; /* Maximize button hover color */
+        }
+
+        #newWindow .title-bar-controls button[aria-label="Close"]:hover {
+            background: #c9302c; /* Close button hover color */
+        }
     </style>
 </head>
 <body>
@@ -167,9 +229,9 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
         </div>
 
         <div class="title-bar-controls">
-          <button aria-label="Minimize" onclick="hideNewWindow()"></button>
-          <button aria-label="Maximize" onclick="hideNewWindow()"></button>
-          <button aria-label="Close" onclick="hideNewWindow()"></button>
+          <button aria-label="Minimize" id="minimizeBtnNew"></button>
+          <button aria-label="Maximize" id="maximizeBtnNew"></button>
+          <button aria-label="Close" id="closeBtnNew"></button>
         </div>
       </div>
       <div class="window-body has-space">
@@ -205,12 +267,15 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
             showNewWindow();
         });
 
-        // Event listeners for OK and Cancel buttons
-        document.getElementById('okButton').addEventListener('click', function() {
+        document.getElementById('minimizeBtnNew').addEventListener('click', function() {
             hideNewWindow();
         });
 
-        document.getElementById('cancelButton').addEventListener('click', function() {
+        document.getElementById('maximizeBtnNew').addEventListener('click', function() {
+            hideNewWindow();
+        });
+
+        document.getElementById('closeBtnNew').addEventListener('click', function() {
             hideNewWindow();
         });
 
@@ -225,6 +290,15 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
             if (document.fullscreenElement) {
                 showNewWindow();
             }
+        });
+
+        // Event listeners for OK and Cancel buttons
+        document.getElementById('okButton').addEventListener('click', function() {
+            hideNewWindow();
+        });
+
+        document.getElementById('cancelButton').addEventListener('click', function() {
+            hideNewWindow();
         });
     </script>
 </body>
