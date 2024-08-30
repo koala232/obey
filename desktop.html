@@ -83,19 +83,23 @@
             transform: translate(-50%, -50%);
             width: 250px;
             background: rgba(255, 255, 255, 0); /* Transparent background */
-            border: 1px solid #ccc;
+            border: none; /* Remove border */
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             padding: 16px;
+            cursor: grab; /* Indicates draggable area */
             user-select: none; /* Prevent text selection */
         }
 
         .new-window:active {
+            cursor: grabbing; /* Change cursor when dragging */
         }
 
         .title-bar {
             padding: 5px;
+            cursor: grab;
             background: rgba(255, 255, 255, 0); /* Transparent background for the title bar */
+            border: none; /* Remove border */
         }
 
         .window-body {
@@ -111,9 +115,9 @@
         /* Styling for the main window */
         .profwin {
             background: rgba(255, 255, 255, 0); /* Transparent background */
-            border: 1px solid #ccc; /* Border to match window appearance */
+            border: none; /* Remove border */
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: none; /* Remove shadow */
         }
 
         .profbody {
@@ -185,7 +189,7 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
     <div id="newWindow" class="window new-window hidden">
       <div class="title-bar">
         <div class="title-bar-text">
-          nigger.exe
+          My First Program
         </div>
 
         <div class="title-bar-controls">
@@ -195,7 +199,7 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
         </div>
       </div>
       <div class="window-body has-space">
-        <p>nigger?</p>
+        <p>Hello, world!</p>
         <section class="field-row" style="justify-content: flex-end">
           <button id="okButton" class="default">OK</button>
           <button id="cancelButton">Cancel</button>
