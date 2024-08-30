@@ -59,29 +59,62 @@
                 text-shadow: 0 0 10px rgba(255, 255, 255, 0.75), 0 0 20px rgba(255, 255, 255, 0.5);
             }
         }
-        /* Error modal styles */
+        /* Error window styles to match other window */
         .error-modal {
             display: none;
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: red;
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            width: 300px;
+            border: 2px solid #000;
+            background: linear-gradient(to bottom, #C0C0C0, #808080);
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
             z-index: 1000;
         }
-        .error-modal button {
-            background-color: white;
-            color: red;
-            border: none;
-            padding: 10px 20px;
-            margin-top: 10px;
-            cursor: pointer;
+        .error-title-bar {
+            background: #000;
+            padding: 4px;
+            color: white;
+            font-family: sans-serif;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .error-title-bar .title-bar-text {
             font-weight: bold;
-            border-radius: 5px;
+        }
+        .error-title-bar .title-bar-controls button {
+            background: #C0C0C0;
+            border: 1px solid #808080;
+            padding: 0 10px;
+            cursor: pointer;
+            color: black;
+        }
+        .error-title-bar .title-bar-controls button:hover {
+            background: #FF0000;
+            color: white;
+        }
+        .error-window-body {
+            padding: 20px;
+            color: black;
+            text-align: center;
+        }
+        .error-window-body p {
+            margin: 10px 0;
+            font-family: sans-serif;
+            font-size: 14px;
+        }
+        .error-window-body button {
+            background: #000;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-family: sans-serif;
+        }
+        .error-window-body button:hover {
+            background: #FF0000;
         }
     </style>
 </head>
@@ -145,8 +178,16 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
 
     <!-- Error Modal -->
     <div id="errorModal" class="error-modal">
-        <p>Error: Action not allowed!</p>
-        <button onclick="closeErrorModal()">Close</button>
+        <div class="error-title-bar">
+            <div class="title-bar-text">Error</div>
+            <div class="title-bar-controls">
+                <button aria-label="Close" onclick="closeErrorModal()">X</button>
+            </div>
+        </div>
+        <div class="error-window-body">
+            <p>Error: Action not allowed!</p>
+            <button onclick="closeErrorModal()">Close</button>
+        </div>
     </div>
 
     <script>
