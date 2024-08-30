@@ -8,7 +8,6 @@
     <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>
     <title>obey</title>
     <style>
-        /* Keyframe animations */
         @keyframes rainbow {
             0% { color: red; }
             14.28% { color: orange; }
@@ -76,7 +75,7 @@
             animation: rainbow 2s infinite, fadeIn 1s ease-in-out;
         }
 
-        /* Styling for draggable window */
+        /* Draggable window styling */
         .new-window {
             position: fixed;
             top: 50%;
@@ -96,10 +95,20 @@
             cursor: grabbing; /* Change cursor when dragging */
         }
 
-        /* Title bar style */
         .title-bar {
             padding: 5px;
             cursor: grab;
+            background: rgba(255, 255, 255, 0); /* Transparent background for the title bar */
+        }
+
+        .window-body {
+            background: rgba(255, 255, 255, 0); /* Transparent background */
+            padding: 0; /* Remove padding to fit content */
+        }
+
+        .window-body p {
+            color: black; /* Make text black */
+            margin: 0; /* Remove default margin if needed */
         }
     </style>
 </head>
@@ -229,47 +238,35 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
             }
         });
 
-        // Variables for drag functionality
-        let isDragging = false;
-        let startX, startY, initialX, initialY;
+        // Draggable functionality
+        const newWindow = document.getElementById('newWindow');
+        const titleBar = newWindow.querySelector('.title-bar');
 
-        // Function to start dragging
-        function startDrag(e) {
+        let isDragging = false;
+        let startX, startY, startLeft, startTop;
+
+        titleBar.addEventListener('mousedown', (e) => {
             isDragging = true;
             startX = e.clientX;
             startY = e.clientY;
-            const rect = newWindow.getBoundingClientRect();
-            initialX = rect.left;
-            initialY = rect.top;
-            
-            // Attach event listeners to handle dragging
-            document.addEventListener('mousemove', dragMove);
-            document.addEventListener('mouseup', stopDrag);
-        }
+            startLeft = newWindow.offsetLeft;
+            startTop = newWindow.offsetTop;
+            document.body.style.cursor = 'grabbing';
+        });
 
-        // Function to handle dragging
-        function dragMove(e) {
+        document.addEventListener('mousemove', (e) => {
             if (isDragging) {
-                const dx = e.clientX - startX;
-                const dy = e.clientY - startY;
-                newWindow.style.left = `${initialX + dx}px`;
-                newWindow.style.top = `${initialY + dy}px`;
+                const deltaX = e.clientX - startX;
+                const deltaY = e.clientY - startY;
+                newWindow.style.left = `${startLeft + deltaX}px`;
+                newWindow.style.top = `${startTop + deltaY}px`;
             }
-        }
+        });
 
-        // Function to stop dragging
-        function stopDrag() {
+        document.addEventListener('mouseup', () => {
             isDragging = false;
-            // Remove event listeners once dragging is finished
-            document.removeEventListener('mousemove', dragMove);
-            document.removeEventListener('mouseup', stopDrag);
-        }
-
-        // Get the new window element
-        const newWindow = document.getElementById('newWindow');
-
-        // Add event listener to the new window to initialize dragging
-        newWindow.addEventListener('mousedown', startDrag);
+            document.body.style.cursor = 'default';
+        });
     </script>
 </body>
 </html>
