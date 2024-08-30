@@ -66,15 +66,14 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 300px;
+            width: 320px;
             border: 2px solid #000;
-            background-color: #C0C0C0;
-            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+            background-color: #ECE9D8;
             z-index: 1000;
             font-family: Tahoma, sans-serif;
         }
         .error-title-bar {
-            background: linear-gradient(to bottom, #B0B0B0, #707070);
+            background: linear-gradient(to bottom, #0062a9, #002b6f);
             padding: 4px;
             color: white;
             display: flex;
@@ -86,37 +85,74 @@
         }
         .error-title-bar .title-bar-text {
             margin-left: 5px;
-            color: black;
+            color: white;
             font-weight: bold;
         }
         .error-title-bar .title-bar-controls button {
-            background: url('./images/xp-buttons.png') no-repeat;
+            background: none;
             border: none;
             width: 16px;
-            height: 14px;
+            height: 16px;
             cursor: pointer;
+            position: relative;
             margin-right: 5px;
         }
-        .error-title-bar .title-bar-controls button:hover {
-            filter: brightness(0.8);
+        .error-title-bar .title-bar-controls button::before,
+        .error-title-bar .title-bar-controls button::after {
+            content: '';
+            position: absolute;
+            background-color: white;
+            top: 50%;
+            left: 50%;
+            width: 12px;
+            height: 2px;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+        .error-title-bar .title-bar-controls button::after {
+            transform: translate(-50%, -50%) rotate(-45deg);
         }
         .error-window-body {
             padding: 20px;
             color: black;
-            text-align: center;
+            text-align: left;
         }
         .error-window-body p {
             margin: 10px 0;
             font-size: 14px;
         }
+        .error-window-body .error-icon {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            background-color: #FF0000;
+            border-radius: 50%;
+            margin-right: 10px;
+            position: relative;
+            vertical-align: middle;
+        }
+        .error-window-body .error-icon::before,
+        .error-window-body .error-icon::after {
+            content: '';
+            position: absolute;
+            background-color: white;
+            top: 50%;
+            left: 50%;
+            width: 16px;
+            height: 2px;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+        .error-window-body .error-icon::after {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
         .error-window-body button {
-            background: linear-gradient(to bottom, #B0B0B0, #707070);
+            background: #ECE9D8;
             color: black;
-            border: 1px solid #808080;
-            padding: 3px 10px;
+            border: 1px solid #A5A5A5;
+            padding: 2px 20px;
             cursor: pointer;
             font-family: Tahoma, sans-serif;
             font-size: 12px;
+            margin-top: 10px;
         }
         .error-window-body button:hover {
             background: #B22222;
@@ -185,14 +221,17 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
     <!-- Error Modal -->
     <div id="errorModal" class="error-modal">
         <div class="error-title-bar">
-            <div class="title-bar-text">Error</div>
+            <div class="title-bar-text">Local Disk (C:)</div>
             <div class="title-bar-controls">
                 <button aria-label="Close" onclick="closeErrorModal()"></button>
             </div>
         </div>
         <div class="error-window-body">
-            <p>Error: Action not allowed!</p>
-            <button onclick="closeErrorModal()">Close</button>
+            <div class="error-icon"></div>
+            <p>C:\Restricted is not accessible.<br>Access is denied.</p>
+            <div style="text-align: center;">
+                <button onclick="closeErrorModal()">OK</button>
+            </div>
         </div>
     </div>
 
