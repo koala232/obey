@@ -59,7 +59,7 @@
                 text-shadow: 0 0 10px rgba(255, 255, 255, 0.75), 0 0 20px rgba(255, 255, 255, 0.5);
             }
         }
-        /* Error window styles to match other window */
+        /* Error window styles to match Windows XP */
         .error-modal {
             display: none;
             position: fixed;
@@ -68,32 +68,37 @@
             transform: translate(-50%, -50%);
             width: 300px;
             border: 2px solid #000;
-            background: linear-gradient(to bottom, #C0C0C0, #808080);
+            background-color: #C0C0C0;
             box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
             z-index: 1000;
+            font-family: Tahoma, sans-serif;
         }
         .error-title-bar {
-            background: #000;
+            background: linear-gradient(to bottom, #B0B0B0, #707070);
             padding: 4px;
             color: white;
-            font-family: sans-serif;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            height: 25px;
+            font-size: 12px;
+            border-bottom: 1px solid #808080;
         }
         .error-title-bar .title-bar-text {
+            margin-left: 5px;
+            color: black;
             font-weight: bold;
         }
         .error-title-bar .title-bar-controls button {
-            background: #C0C0C0;
-            border: 1px solid #808080;
-            padding: 0 10px;
+            background: url('./images/xp-buttons.png') no-repeat;
+            border: none;
+            width: 16px;
+            height: 14px;
             cursor: pointer;
-            color: black;
+            margin-right: 5px;
         }
         .error-title-bar .title-bar-controls button:hover {
-            background: #FF0000;
-            color: white;
+            filter: brightness(0.8);
         }
         .error-window-body {
             padding: 20px;
@@ -102,19 +107,20 @@
         }
         .error-window-body p {
             margin: 10px 0;
-            font-family: sans-serif;
             font-size: 14px;
         }
         .error-window-body button {
-            background: #000;
-            color: white;
-            border: none;
-            padding: 5px 10px;
+            background: linear-gradient(to bottom, #B0B0B0, #707070);
+            color: black;
+            border: 1px solid #808080;
+            padding: 3px 10px;
             cursor: pointer;
-            font-family: sans-serif;
+            font-family: Tahoma, sans-serif;
+            font-size: 12px;
         }
         .error-window-body button:hover {
-            background: #FF0000;
+            background: #B22222;
+            color: white;
         }
     </style>
 </head>
@@ -181,7 +187,7 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
         <div class="error-title-bar">
             <div class="title-bar-text">Error</div>
             <div class="title-bar-controls">
-                <button aria-label="Close" onclick="closeErrorModal()">X</button>
+                <button aria-label="Close" onclick="closeErrorModal()"></button>
             </div>
         </div>
         <div class="error-window-body">
