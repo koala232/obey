@@ -77,13 +77,10 @@
 
         /* Center the message box */
         .new-window {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            position: fixed; /* Ensure it's fixed in place */
+            top: 50%; /* Center vertically */
+            left: 50%; /* Center horizontally */
+            transform: translate(-50%, -50%); /* Offset by half its width and height */
             width: 250px;
             background: white;
             border: 1px solid #ccc;
@@ -92,7 +89,7 @@
             padding: 16px;
         }
 
-        /* Style for the message text */
+        /* Ensure the text inside is black */
         #newWindow p {
             color: black;
         }
@@ -160,7 +157,7 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
     <div id="newWindow" class="window new-window hidden">
       <div class="title-bar">
         <div class="title-bar-text">
-          Money Mitch
+          My First Program
         </div>
 
         <div class="title-bar-controls">
@@ -170,7 +167,7 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
         </div>
       </div>
       <div class="window-body has-space">
-        <p>nigger</p>
+        <p>Hello, world!</p>
         <section class="field-row" style="justify-content: flex-end">
           <button class="default">OK</button>
           <button>Cancel</button>
