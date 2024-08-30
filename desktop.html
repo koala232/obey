@@ -10,12 +10,13 @@
     <style>
         @keyframes rainbow {
             0% { color: red; }
-            16% { color: orange; }
-            32% { color: yellow; }
-            48% { color: green; }
-            64% { color: blue; }
-            80% { color: indigo; }
-            100% { color: violet; }
+            14.28% { color: orange; }
+            28.56% { color: yellow; }
+            42.84% { color: green; }
+            57.12% { color: blue; }
+            71.4% { color: indigo; }
+            85.68% { color: violet; }
+            100% { color: red; }
         }
 
         @keyframes fadeIn {
@@ -24,7 +25,7 @@
         }
 
         .rainbow-text {
-            animation: rainbow 2s infinite, fadeIn 2s ease-in-out;
+            animation: rainbow 10s infinite, fadeIn 3s ease-in-out;
         }
 
         .container {
@@ -41,7 +42,7 @@
             text-align: center;
             padding: 10px 0;
             font-size: 20px;
-            animation: rainbow 5s infinite, fadeIn 5s ease-in-out;
+            animation: rainbow 10s infinite, fadeIn 3s ease-in-out;
         }
 
         .ascii > * {
@@ -67,11 +68,11 @@
             font-size: 48px;
             font-weight: bold;
             cursor: pointer;
-            animation: rainbow 2s infinite, fadeIn 2s ease-in-out;
+            animation: rainbow 10s infinite, fadeIn 3s ease-in-out;
         }
 
         .restore-text.glow {
-            animation: rainbow 2s infinite, fadeIn 2s ease-in-out;
+            animation: rainbow 10s infinite, fadeIn 3s ease-in-out;
         }
     </style>
 </head>
