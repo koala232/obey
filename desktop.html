@@ -75,28 +75,76 @@
             animation: rainbow 2s infinite, fadeIn 1s ease-in-out;
         }
 
+        /* Message Box Styling */
         .message-box {
             display: none;
             position: fixed;
-            top: 20%;
+            top: 10%;
             left: 50%;
             transform: translateX(-50%);
-            padding: 1em;
+            width: 300px;
+            background: #f0f0f0;
             border: 1px solid #ccc;
-            background: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
             cursor: move;
-        }
-        .message-box button {
-            margin-top: 1em;
+            z-index: 1000;
         }
 
         .message-box .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 10px;
+            background: #666;
+            color: #fff;
+            border-bottom: 1px solid #ccc;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
             cursor: move;
+        }
+
+        .message-box .header .title {
+            font-weight: bold;
+        }
+
+        .message-box .header .close-btn {
+            background: #f00;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .message-box .header .close-btn:hover {
+            background: #c00;
+        }
+
+        .message-box .content {
+            padding: 15px;
+            font-family: 'Arial', sans-serif;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .message-box .content button {
+            background: #f00;
+            border: none;
+            color: #fff;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+
+        .message-box .content button:hover {
+            background: #c00;
         }
     </style>
 </head>
@@ -144,11 +192,13 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
     <!-- Message Box -->
     <div class="message-box" id="messageBox">
         <div class="header">
-            <div>Message Box</div>
-            <button onclick="closeMessageBox()">X</button>
+            <div class="title">Message Box</div>
+            <button class="close-btn" onclick="closeMessageBox()">X</button>
         </div>
-        <p>This is a message box!</p>
-        <button onclick="closeMessageBox()">Close</button>
+        <div class="content">
+            <p>This is a message box!</p>
+            <button onclick="closeMessageBox()">Close</button>
+        </div>
     </div>
 
     <div id="restoreText" class="restore-text glow rainbow-text">obey</div>
