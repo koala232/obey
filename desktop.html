@@ -82,11 +82,17 @@
             left: 50%; /* Center horizontally */
             transform: translate(-50%, -50%); /* Offset by half its width and height */
             width: 250px;
-            background: white;
+            background: rgba(255, 255, 255, 0); /* Transparent background */
             border: 1px solid #ccc;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             padding: 16px;
+        }
+
+        /* Transparent background for the message box content */
+        #newWindow .window-body {
+            background: rgba(255, 255, 255, 0); /* Transparent background */
+            padding: 0; /* Remove extra padding if needed */
         }
 
         /* Ensure the text inside is black */
@@ -157,7 +163,7 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
     <div id="newWindow" class="window new-window hidden">
       <div class="title-bar">
         <div class="title-bar-text">
-          Money Mitch
+          My First Program
         </div>
 
         <div class="title-bar-controls">
@@ -167,7 +173,7 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
         </div>
       </div>
       <div class="window-body has-space">
-        <p>nigger</p>
+        <p>Hello, world!</p>
         <section class="field-row" style="justify-content: flex-end">
           <button id="okButton" class="default">OK</button>
           <button id="cancelButton">Cancel</button>
