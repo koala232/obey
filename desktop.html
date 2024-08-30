@@ -18,7 +18,7 @@
         .ascii pre {
             background-color: transparent;
             border: none;
-            color: black; /* Changed color to black */
+            color: gold; /* Changed color to black */
             text-align: center;
             padding: 10px 0;
         }
@@ -58,104 +58,6 @@
             100% {
                 text-shadow: 0 0 10px rgba(0, 0, 0, 0.75), 0 0 20px rgba(0, 0, 0, 0.5);
             }
-        }
-        .error-modal {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 320px;
-            border: 2px solid #000;
-            background-color: #ECE9D8;
-            z-index: 1000;
-            font-family: Tahoma, sans-serif;
-        }
-        .error-title-bar {
-            background: linear-gradient(to bottom, #0062a9, #002b6f);
-            padding: 4px;
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 25px;
-            font-size: 12px;
-            border-bottom: 1px solid #808080;
-        }
-        .error-title-bar .title-bar-text {
-            margin-left: 5px;
-            color: black; /* Changed color to black */
-            font-weight: bold;
-        }
-        .error-title-bar .title-bar-controls button {
-            background: none;
-            border: none;
-            width: 16px;
-            height: 16px;
-            cursor: pointer;
-            position: relative;
-            margin-right: 5px;
-        }
-        .error-title-bar .title-bar-controls button::before,
-        .error-title-bar .title-bar-controls button::after {
-            content: '';
-            position: absolute;
-            background-color: white;
-            top: 50%;
-            left: 50%;
-            width: 12px;
-            height: 2px;
-            transform: translate(-50%, -50%) rotate(45deg);
-        }
-        .error-title-bar .title-bar-controls button::after {
-            transform: translate(-50%, -50%) rotate(-45deg);
-        }
-        .error-window-body {
-            padding: 20px;
-            color: black;
-            text-align: left;
-        }
-        .error-window-body p {
-            margin: 10px 0;
-            font-size: 14px;
-        }
-        .error-window-body .error-icon {
-            display: inline-block;
-            width: 32px;
-            height: 32px;
-            background-color: #FF0000;
-            border-radius: 50%;
-            margin-right: 10px;
-            position: relative;
-            vertical-align: middle;
-        }
-        .error-window-body .error-icon::before,
-        .error-window-body .error-icon::after {
-            content: '';
-            position: absolute;
-            background-color: white;
-            top: 50%;
-            left: 50%;
-            width: 16px;
-            height: 2px;
-            transform: translate(-50%, -50%) rotate(45deg);
-        }
-        .error-window-body .error-icon::after {
-            transform: translate(-50%, -50%) rotate(-45deg);
-        }
-        .error-window-body button {
-            background: #ECE9D8;
-            color: black;
-            border: 1px solid #A5A5A5;
-            padding: 2px 20px;
-            cursor: pointer;
-            font-family: Tahoma, sans-serif;
-            font-size: 12px;
-            margin-top: 10px;
-        }
-        .error-window-body button:hover {
-            background: #B22222;
-            color: white;
         }
     </style>
 </head>
@@ -217,45 +119,7 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
     <audio id="audio"></audio>
     <script src="./js/mzik.js"></script>
 
-    <!-- Error Modal -->
-    <div id="errorModal" class="error-modal">
-        <div class="error-title-bar">
-            <div class="title-bar-text">Local Disk (C:)</div>
-            <div class="title-bar-controls">
-                <button aria-label="Close" onclick="closeErrorModal()"></button>
-            </div>
-        </div>
-        <div class="error-window-body">
-            <div class="error-icon"></div>
-            <p>C:\Restricted is not accessible.<br>Access is denied.</p>
-            <div style="text-align: center;">
-                <button onclick="closeErrorModal()">OK</button>
-            </div>
-        </div>
-    </div>
-
     <script>
-        function showErrorModal() {
-            document.getElementById('errorModal').style.display = 'block';
-        }
-
-        function closeErrorModal() {
-            document.getElementById('errorModal').style.display = 'none';
-        }
-
-        document.getElementById('closeBtn').addEventListener('click', function() {
-            showErrorModal();
-        });
-
-        document.getElementById('minimizeBtn').addEventListener('click', function() {
-            showErrorModal();
-        });
-
-        document.getElementById('maximizeBtn').addEventListener('click', function(event) {
-            event.preventDefault();
-            showErrorModal();
-        });
-
         document.getElementById('restoreText').addEventListener('click', function() {
             document.getElementById('window').style.display = 'block';
             document.getElementById('restoreText').style.display = 'none';
