@@ -169,8 +169,8 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
       <div class="window-body has-space">
         <p>nigger</p>
         <section class="field-row" style="justify-content: flex-end">
-          <button class="default">OK</button>
-          <button>Cancel</button>
+          <button id="okButton" class="default">OK</button>
+          <button id="cancelButton">Cancel</button>
         </section>
       </div>
     </div>
@@ -197,6 +197,15 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
 
         document.getElementById('closeBtn').addEventListener('click', function() {
             showNewWindow();
+        });
+
+        // Event listeners for OK and Cancel buttons
+        document.getElementById('okButton').addEventListener('click', function() {
+            hideNewWindow();
+        });
+
+        document.getElementById('cancelButton').addEventListener('click', function() {
+            hideNewWindow();
         });
 
         // Restore text click event
