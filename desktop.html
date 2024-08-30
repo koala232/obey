@@ -8,6 +8,7 @@
     <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>
     <title>obey</title>
     <style>
+        /* Existing styles */
         @keyframes rainbow {
             0% { color: red; }
             14.28% { color: orange; }
@@ -226,6 +227,45 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
                 showNewWindow();
             }
         });
+
+        // Variables to store the position and dragging state
+        let isDragging = false;
+        let offsetX, offsetY;
+
+        // Function to initialize dragging
+        function initDrag(e) {
+            isDragging = true;
+            // Calculate the offset between the mouse position and the top-left corner of the newWindow
+            offsetX = e.clientX - newWindow.getBoundingClientRect().left;
+            offsetY = e.clientY - newWindow.getBoundingClientRect().top;
+            // Attach event listeners to handle dragging
+            document.addEventListener('mousemove', onMouseMove);
+            document.addEventListener('mouseup', onMouseUp);
+        }
+
+        // Function to handle dragging
+        function onMouseMove(e) {
+            if (isDragging) {
+                // Update the position of newWindow
+                newWindow.style.left = `${e.clientX - offsetX}px`;
+                newWindow.style.top = `${e.clientY - offsetY}px`;
+            }
+        }
+
+        // Function to stop dragging
+        function onMouseUp() {
+            isDragging = false;
+            // Remove event listeners once dragging is finished
+            document.removeEventListener('mousemove', onMouseMove);
+            document.removeEventListener('mouseup', onMouseUp);
+        }
+
+        // Get the title bar and message box
+        const titleBar = document.querySelector('#newWindow .title-bar');
+        const newWindow = document.getElementById('newWindow');
+
+        // Add event listener to initialize dragging
+        titleBar.addEventListener('mousedown', initDrag);
     </script>
 </body>
 </html>
