@@ -74,6 +74,48 @@
         .restore-text.glow {
             animation: rainbow 2s infinite, fadeIn 1s ease-in-out;
         }
+
+        /* Styles for the new window */
+        .new-window {
+            position: absolute; /* Use absolute positioning for centering */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white; /* Background color for visibility */
+            border: 1px solid #ccc; /* Border color */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for better visibility */
+            color: black; /* Set text color to black */
+        }
+
+        /* Ensure title-bar buttons have the same style */
+        .title-bar-controls button {
+            background: none; /* Remove background */
+            border: none; /* Remove border */
+            cursor: pointer; /* Change cursor to pointer */
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Title-bar buttons styling for the popup window */
+        .new-window .title-bar-controls button {
+            /* Add same styles as the main window buttons */
+        }
+
+        /* Button icons can be set using background images or SVGs */
+        .title-bar-controls button[aria-label="Minimize"] {
+            background: url('./icon/minimize.png') no-repeat center center;
+            background-size: contain;
+        }
+
+        .title-bar-controls button[aria-label="Maximize"] {
+            background: url('./icon/maximize.png') no-repeat center center;
+            background-size: contain;
+        }
+
+        .title-bar-controls button[aria-label="Close"] {
+            background: url('./icon/close.png') no-repeat center center;
+            background-size: contain;
+        }
     </style>
 </head>
 <body>
@@ -118,53 +160,82 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
     </div>
 
     <div id="restoreText" class="restore-text glow rainbow-text">obey</div>
-    
+
+    <!-- New popup window -->
+    <div id="newWindow" class="new-window hidden">
+        <div class="title-bar">
+            <div class="title-bar-text">
+                My First Program
+            </div>
+            <div class="title-bar-controls">
+                <button aria-label="Minimize"></button>
+                <button aria-label="Maximize"></button>
+                <button aria-label="Close"></button>
+            </div>
+        </div>
+        <div class="window-body has-space">
+            <p>Hello, world!</p>
+            <section class="field-row" style="justify-content: flex-end">
+                <button class="default">OK</button>
+                <button>Cancel</button>
+            </section>
+        </div>
+    </div>
+
     <div class="audwin" style="max-width: 650px">
-      <div class="audio-controls">
-        <p style="font-size:13px;margin-bottom:5px;" class="rainbow-text">Now Playing:</p>
-          <div id="songInfo" class="text-center rainbow-text">
-              <div id="artist">Artist</div>&nbsp;-&nbsp;<div id="songTitle">Song</div>
-          </div>
-          <div class="controls" style="margin-top:10px;margin-bottom:7px;">
-              <a onclick="previousAudio()" style="margin-right:10px;"><img src="./icon/back.png"></a>
-              <a id="playPauseButton" onclick="togglePlayPause()" style="margin-right:10px;"><img src="./icon/pause.png"></a>
-              <a onclick="nextAudio()"><img src="./icon/next.png"></a>
-          </div>
-      </div>
-    <audio id="audio"></audio>
-    <script src="./js/mzik.js"></script>
-
-    <!-- New Window HTML -->
-    <div id="newWindow" class="window new-window hidden" style="margin: 32px; width: 250px">
-      <div class="title-bar">
-        <div class="title-bar-text">
-          My First Program
+        <div class="audio-controls">
+            <p style="font-size:13px;margin-bottom:5px;" class="rainbow-text">Now Playing:</p>
+            <div id="songInfo" class="text-center rainbow-text">
+                <div id="artist">Artist</div>&nbsp;-&nbsp;<div id="songTitle">Song</div>
+            </div>
+            <div class="controls" style="margin-top:10px;margin-bottom:7px;">
+                <a onclick="previousAudio()" style="margin-right:10px;"><img src="./icon/back.png"></a>
+                <a id="playPauseButton" onclick="togglePlayPause()" style="margin-right:10px;"><img src="./icon/pause.png"></a>
+                <a onclick="nextAudio()"><img src="./icon/next.png"></a>
+            </div>
         </div>
-
-        <div class="title-bar-controls">
-          <button aria-label="Minimize" onclick="hideNewWindow()"></button>
-          <button aria-label="Maximize" onclick="hideNewWindow()"></button>
-          <button aria-label="Close" onclick="hideNewWindow()"></button>
-        </div>
-      </div>
-      <div class="window-body has-space">
-        <p>Hello, world!</p>
-        <section class="field-row" style="justify-content: flex-end">
-          <button class="default">OK</button>
-          <button>Cancel</button>
-        </section>
-      </div>
+        <audio id="audio"></audio>
+        <script src="./js/mzik.js"></script>
     </div>
 
     <script>
         // Function to show the new window
         function showNewWindow() {
-            document.getElementById('newWindow').classList.remove('hidden');
+            const newWindow = document.getElementById('newWindow');
+            newWindow.classList.remove('hidden');
+            makeDraggable(newWindow); // Make it draggable
         }
 
         // Function to hide the new window
         function hideNewWindow() {
             document.getElementById('newWindow').classList.add('hidden');
+        }
+
+        // Function to make an element draggable
+        function makeDraggable(element) {
+            let isMouseDown = false;
+            let offsetX, offsetY;
+
+            element.querySelector('.title-bar').addEventListener('mousedown', function(e) {
+                isMouseDown = true;
+                offsetX = e.clientX - element.getBoundingClientRect().left;
+                offsetY = e.clientY - element.getBoundingClientRect().top;
+                document.addEventListener('mousemove', onMouseMove);
+                document.addEventListener('mouseup', onMouseUp);
+            });
+
+            function onMouseMove(e) {
+                if (isMouseDown) {
+                    element.style.left = `${e.clientX - offsetX}px`;
+                    element.style.top = `${e.clientY - offsetY}px`;
+                }
+            }
+
+            function onMouseUp() {
+                isMouseDown = false;
+                document.removeEventListener('mousemove', onMouseMove);
+                document.removeEventListener('mouseup', onMouseUp);
+            }
         }
 
         // Event listeners for Minimize, Maximize, and Close buttons
