@@ -110,6 +110,20 @@
             color: black; /* Make text black */
             margin: 0; /* Remove default margin if needed */
         }
+
+        /* Styling for the main window */
+        .profwin {
+            background: rgba(255, 255, 255, 0); /* Transparent background */
+            border: 1px solid #ccc; /* Border to match window appearance */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .profbody {
+            background: rgba(255, 255, 255, 0); /* Transparent background */
+            padding: 16px;
+        }
+
     </style>
 </head>
 <body>
@@ -174,7 +188,7 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
     <div id="newWindow" class="window new-window hidden">
       <div class="title-bar">
         <div class="title-bar-text">
-          Money Mitch
+          My First Program
         </div>
 
         <div class="title-bar-controls">
@@ -184,7 +198,7 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
         </div>
       </div>
       <div class="window-body has-space">
-        <p>nigger</p>
+        <p>Hello, world!</p>
         <section class="field-row" style="justify-content: flex-end">
           <button id="okButton" class="default">OK</button>
           <button id="cancelButton">Cancel</button>
