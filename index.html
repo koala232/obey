@@ -38,6 +38,115 @@
         <img src="images/cock.gif" alt="Monkey" style="height: 300px; display: block; margin: 0 auto; padding: 1em;">
     </div>
     <meta http-equiv="refresh" content="3; URL=desktop" />
+</div>
+
+<!-- Error Modal -->
+<div id="errorModal" class="error-modal">
+    <div class="error-title-bar">
+        <div class="title-bar-text">Error</div>
+        <div class="title-bar-controls">
+            <button aria-label="Close" onclick="closeErrorModal()">×</button>
+        </div>
+    </div>
+    <div class="error-window-body">
+        <div class="error-icon"></div>
+        <p><strong>Local Disk (C:)</strong><br>C:\Restricted is not accessible.<br>Access is denied.</p>
+        <div style="text-align: center;">
+            <button onclick="closeErrorModal()">OK</button>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Error window styles to match Windows XP */
+    .error-modal {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 300px;
+        border: 2px solid #000;
+        background-color: #ECE9D8;
+        z-index: 1000;
+        font-family: Tahoma, sans-serif;
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .error-title-bar {
+        background: linear-gradient(to bottom, #0078d7, #005a9e);
+        padding: 4px;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 22px;
+        font-size: 12px;
+        border-bottom: 1px solid #808080;
+    }
+
+    .error-title-bar .title-bar-text {
+        margin-left: 5px;
+        color: white;
+        font-weight: bold;
+        text-shadow: 1px 1px #000;
+    }
+
+    .error-title-bar .title-bar-controls button {
+        background: none;
+        border: none;
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+        margin-right: 5px;
+        font-size: 16px;
+        line-height: 14px;
+        color: white;
+    }
+
+    .error-window-body {
+        padding: 15px;
+        color: black;
+        text-align: left;
+    }
+
+    .error-window-body p {
+        margin: 10px 0;
+        font-size: 12px;
+    }
+
+    .error-window-body .error-icon {
+        display: inline-block;
+        width: 34px;
+        height: 34px;
+        background-image: url('https://icons.iconarchive.com/icons/cornmanthe3rd/plex/256/System-error-icon.png');
+        background-size: cover;
+        margin-right: 10px;
+        vertical-align: middle;
+    }
+
+    .error-window-body button {
+        background: #ECE9D8;
+        color: black;
+        border: 1px solid #A5A5A5;
+        padding: 2px 20px;
+        cursor: pointer;
+        font-family: Tahoma, sans-serif;
+        font-size: 12px;
+        margin-top: 10px;
+    }
+
+    .error-window-body button:hover {
+        background: #0078d7;
+        color: white;
+    }
+</style>
+
+<script>
+    function closeErrorModal() {
+        document.getElementById('errorModal').style.display = 'none';
+    }
+</script>
 
 </body>
 
