@@ -74,22 +74,6 @@
         .restore-text.glow {
             animation: rainbow 2s infinite, fadeIn 1s ease-in-out;
         }
-
-        /* New Window Styles */
-        .window.active {
-            display: none; /* Initially hidden */
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 1000;
-            background: white;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            max-width: 300px;
-            padding: 20px;
-        }
     </style>
 </head>
 <body>
@@ -133,21 +117,6 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
         </div>
     </div>
 
-    <!-- New Window HTML -->
-    <div id="messageBox" class="window">
-        <div class="title-bar">
-            <div class="title-bar-text">A window with contents</div>
-            <div class="title-bar-controls">
-                <button aria-label="Minimize" id="minimizeMsgBtn"></button>
-                <button aria-label="Maximize" id="maximizeMsgBtn"></button>
-                <button aria-label="Close" id="closeMsgBtn"></button>
-            </div>
-        </div>
-        <div class="window-body has-space">
-            <p>There's so much room for activities!</p>
-        </div>
-    </div>
-
     <div id="restoreText" class="restore-text glow rainbow-text">obey</div>
     
     <div class="audwin" style="max-width: 650px">
@@ -166,14 +135,16 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
     <script src="./js/mzik.js"></script>
 
     <script>
-        function showMessageBox() {
-            document.getElementById('messageBox').style.display = 'block';
-        }
-
         // Event listeners for buttons
-        document.getElementById('minimizeBtn').addEventListener('click', showMessageBox);
-        document.getElementById('maximizeBtn').addEventListener('click', showMessageBox);
-        document.getElementById('closeBtn').addEventListener('click', showMessageBox);
+        document.getElementById('minimizeBtn').addEventListener('click', function() {
+            // Your code here
+        });
+        document.getElementById('maximizeBtn').addEventListener('click', function() {
+            // Your code here
+        });
+        document.getElementById('closeBtn').addEventListener('click', function() {
+            // Your code here
+        });
 
         // Restore text click event
         document.getElementById('restoreText').addEventListener('click', function() {
@@ -184,7 +155,7 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
         // Fullscreen toggle
         document.addEventListener('fullscreenchange', function() {
             if (document.fullscreenElement) {
-                showMessageBox();
+                // Your code here
             }
         });
     </script>
