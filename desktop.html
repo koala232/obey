@@ -134,16 +134,50 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
     <audio id="audio"></audio>
     <script src="./js/mzik.js"></script>
 
+    <!-- New Window HTML -->
+    <div id="newWindow" class="window new-window hidden" style="margin: 32px; width: 250px">
+      <div class="title-bar">
+        <div class="title-bar-text">
+          My First Program
+        </div>
+
+        <div class="title-bar-controls">
+          <button aria-label="Minimize" onclick="hideNewWindow()"></button>
+          <button aria-label="Maximize" onclick="hideNewWindow()"></button>
+          <button aria-label="Close" onclick="hideNewWindow()"></button>
+        </div>
+      </div>
+      <div class="window-body has-space">
+        <p>Hello, world!</p>
+        <section class="field-row" style="justify-content: flex-end">
+          <button class="default">OK</button>
+          <button>Cancel</button>
+        </section>
+      </div>
+    </div>
+
     <script>
-        // Event listeners for buttons
+        // Function to show the new window
+        function showNewWindow() {
+            document.getElementById('newWindow').classList.remove('hidden');
+        }
+
+        // Function to hide the new window
+        function hideNewWindow() {
+            document.getElementById('newWindow').classList.add('hidden');
+        }
+
+        // Event listeners for Minimize, Maximize, and Close buttons
         document.getElementById('minimizeBtn').addEventListener('click', function() {
-            // Your code here
+            showNewWindow();
         });
+
         document.getElementById('maximizeBtn').addEventListener('click', function() {
-            // Your code here
+            showNewWindow();
         });
+
         document.getElementById('closeBtn').addEventListener('click', function() {
-            // Your code here
+            showNewWindow();
         });
 
         // Restore text click event
@@ -155,7 +189,7 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
         // Fullscreen toggle
         document.addEventListener('fullscreenchange', function() {
             if (document.fullscreenElement) {
-                // Your code here
+                showNewWindow();
             }
         });
     </script>
