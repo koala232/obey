@@ -110,7 +110,7 @@
         }
 
         .window-body p {
-            color: rgba(0, 0, 0, 0); /* Make text transparent */
+            color: black; /* Make text black */
             margin: 0; /* Remove default margin if needed */
         }
 
@@ -125,13 +125,6 @@
         .profbody {
             background: rgba(255, 255, 255, 0); /* Transparent background */
             padding: 16px;
-        }
-
-        /* Zoom-out effect */
-        body {
-            transform: scale(0.9); /* Adjust the scale as needed */
-            transform-origin: top center; /* Keeps the content centered */
-            overflow-x: hidden; /* Prevent horizontal scrollbars */
         }
     </style>
 </head>
@@ -196,8 +189,8 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
     <!-- New Window HTML -->
     <div id="newWindow" class="window new-window hidden">
       <div class="title-bar">
-        <div class="title-bar-text rainbow-text">
-          text.exe
+        <div class="title-bar-text">
+          nigger.exe
         </div>
 
         <div class="title-bar-controls">
@@ -207,7 +200,7 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
         </div>
       </div>
       <div class="window-body has-space">
-        <p style="color: rgba(0, 0, 0, 0);">text</p>
+        <p>nigger?</p>
         <section class="field-row" style="justify-content: flex-end">
           <button id="okButton" class="default">OK</button>
           <button id="cancelButton">Cancel</button>
@@ -227,83 +220,69 @@ $$ |  $$ |$$ |  $$ |$$ |          $$ |
         }
 
         // Event listeners for Minimize, Maximize, and Close buttons
-        document.getElementById('minimizeBtn').addEventListener('click', () => {
-            document.getElementById('window').style.display = 'none';
+        document.getElementById('minimizeBtn').addEventListener('click', function() {
+            showNewWindow();
         });
 
-        document.getElementById('maximizeBtn').addEventListener('click', () => {
-            document.getElementById('window').style.width = '100%';
-            document.getElementById('window').style.height = '100%';
+        document.getElementById('maximizeBtn').addEventListener('click', function() {
+            showNewWindow();
         });
 
-        document.getElementById('closeBtn').addEventListener('click', () => {
-            document.getElementById('window').style.display = 'none';
-            document.getElementById('restoreText').style.display = 'block';
+        document.getElementById('closeBtn').addEventListener('click', function() {
+            showNewWindow();
         });
 
-        // Restore the window when the restoreText is clicked
-        document.getElementById('restoreText').addEventListener('click', () => {
+        // Event listeners for OK and Cancel buttons
+        document.getElementById('okButton').addEventListener('click', function() {
+            hideNewWindow();
+        });
+
+        document.getElementById('cancelButton').addEventListener('click', function() {
+            hideNewWindow();
+        });
+
+        // Restore text click event
+        document.getElementById('restoreText').addEventListener('click', function() {
             document.getElementById('window').style.display = 'block';
             document.getElementById('restoreText').style.display = 'none';
         });
 
-        // Enable drag functionality for the new window
-        dragElement(document.getElementById('newWindow'));
-
-        function dragElement(elmnt) {
-            var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-            if (document.querySelector(".title-bar")) {
-                /* if present, the header is where you move the DIV from:*/
-                document.querySelector(".title-bar").onmousedown = dragMouseDown;
-            } else {
-                /* otherwise, move the DIV from anywhere inside the DIV:*/
-                elmnt.onmousedown = dragMouseDown;
+        // Fullscreen toggle
+        document.addEventListener('fullscreenchange', function() {
+            if (document.fullscreenElement) {
+                showNewWindow();
             }
+        });
 
-            function dragMouseDown(e) {
-                e = e || window.event;
-                e.preventDefault();
-                // get the mouse cursor position at startup:
-                pos3 = e.clientX;
-                pos4 = e.clientY;
-                document.onmouseup = closeDragElement;
-                // call a function whenever the cursor moves:
-                document.onmousemove = elementDrag;
+        // Draggable functionality
+        const newWindow = document.getElementById('newWindow');
+        const titleBar = newWindow.querySelector('.title-bar');
+
+        let isDragging = false;
+        let startX, startY, startLeft, startTop;
+
+        titleBar.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.clientX;
+            startY = e.clientY;
+            startLeft = newWindow.offsetLeft;
+            startTop = newWindow.offsetTop;
+            document.body.style.cursor = 'grabbing';
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                const deltaX = e.clientX - startX;
+                const deltaY = e.clientY - startY;
+                newWindow.style.left = ${startLeft + deltaX}px;
+                newWindow.style.top = ${startTop + deltaY}px;
             }
+        });
 
-            function elementDrag(e) {
-                e = e || window.event;
-                e.preventDefault();
-                // calculate the new cursor position:
-                pos1 = pos3 - e.clientX;
-                pos2 = pos4 - e.clientY;
-                pos3 = e.clientX;
-                pos4 = e.clientY;
-                // set the element's new position:
-                elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-                elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-            }
-
-            function closeDragElement() {
-                /* stop moving when mouse button is released:*/
-                document.onmouseup = null;
-                document.onmousemove = null;
-            }
-        }
-
-        // Example function to show the new window when needed
-        function showNewWindow() {
-            document.getElementById('newWindow').classList.remove('hidden');
-        }
-
-        // Function to hide the new window
-        function hideNewWindow() {
-            document.getElementById('newWindow').classList.add('hidden');
-        }
-
-        // Event listeners for buttons in the new window
-        document.getElementById('okButton').addEventListener('click', hideNewWindow);
-        document.getElementById('cancelButton').addEventListener('click', hideNewWindow);
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+            document.body.style.cursor = 'default';
+        });
     </script>
 </body>
 </html>
