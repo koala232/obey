@@ -75,53 +75,53 @@
             animation: rainbow 2s infinite, fadeIn 1s ease-in-out;
         }
 
-        /* Draggable window styling */
+        
         .new-window {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             width: 250px;
-            background: rgba(255, 255, 255, 0); /* Transparent background */
-            border: none; /* Remove border */
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            padding: 16px;
-            cursor: grab; /* Indicates draggable area */
-            user-select: none; /* Prevent text selection */
+            background: rgba(255, 255, 255, 0); 
+            border: none; 
+            border-radius: 0px;
+            box-shadow: 0 0px 0px rgba(0, 0, 0, 0.2);
+            padding: 0px;
+            cursor: grab; 
+            user-select: none; 
         }
 
         .new-window:active {
-            cursor: grabbing; /* Change cursor when dragging */
+            cursor: grabbing; 
         }
 
         .title-bar {
             padding: 5px;
             cursor: grab;
-            background: rgba(255, 255, 255, 0); /* Transparent background for the title bar */
-            border: none; /* Remove border */
+            background: rgba(255, 255, 255, 0); 
+            border: none; 
         }
 
         .window-body {
-            background: rgba(255, 255, 255, 0); /* Transparent background */
-            padding: 0; /* Remove padding to fit content */
+            background: rgba(255, 255, 255, 0); 
+            padding: 0; 
         }
 
         .window-body p {
-            color: black; /* Make text black */
-            margin: 0; /* Remove default margin if needed */
+            color: black; 
+            margin: 0; 
         }
 
-        /* Styling for the main window */
+        
         .profwin {
-            background: rgba(255, 255, 255, 0); /* Transparent background */
-            border: none; /* Remove border */
+            background: rgba(255, 255, 255, 0); 
+            border: none; 
             border-radius: 8px;
-            box-shadow: none; /* Remove shadow */
+            box-shadow: none; 
         }
 
         .profbody {
-            background: rgba(255, 255, 255, 0); /* Transparent background */
+            background: rgba(255, 255, 255, 0); 
             padding: 16px;
         }
 
@@ -211,17 +211,17 @@ $$ | \_/ $$ |\$$$$$$  |$$ |  $$ |\$$$$$$$\ \$$$$$$$ |      $$ | \_/ $$ |$$ |  \$
     </div>
 
     <script>
-        // Function to show the new window
+        
         function showNewWindow() {
             document.getElementById('newWindow').classList.remove('hidden');
         }
 
-        // Function to hide the new window
+       
         function hideNewWindow() {
             document.getElementById('newWindow').classList.add('hidden');
         }
 
-        // Event listeners for Minimize, Maximize, and Close buttons
+        
         document.getElementById('minimizeBtn').addEventListener('click', function() {
             showNewWindow();
         });
@@ -234,7 +234,7 @@ $$ | \_/ $$ |\$$$$$$  |$$ |  $$ |\$$$$$$$\ \$$$$$$$ |      $$ | \_/ $$ |$$ |  \$
             showNewWindow();
         });
 
-        // Event listeners for OK and Cancel buttons
+        
         document.getElementById('okButton').addEventListener('click', function() {
             hideNewWindow();
         });
@@ -243,20 +243,20 @@ $$ | \_/ $$ |\$$$$$$  |$$ |  $$ |\$$$$$$$\ \$$$$$$$ |      $$ | \_/ $$ |$$ |  \$
             hideNewWindow();
         });
 
-        // Restore text click event
+        
         document.getElementById('restoreText').addEventListener('click', function() {
             document.getElementById('window').style.display = 'block';
             document.getElementById('restoreText').style.display = 'none';
         });
 
-        // Fullscreen toggle
+        
         document.addEventListener('fullscreenchange', function() {
             if (document.fullscreenElement) {
                 showNewWindow();
             }
         });
 
-        // Draggable functionality
+        
         const newWindow = document.getElementById('newWindow');
         const titleBar = newWindow.querySelector('.title-bar');
 
