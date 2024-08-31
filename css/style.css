@@ -11,7 +11,6 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed; 
     background-position: center;
-    backdrop-filter: blur(3px);
     overflow-y:hidden;
     overflow-x:hidden;
     background-color:black;
@@ -25,8 +24,15 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed; 
     background-position: center;
-    backdrop-filter: blur(10px);
     height:223px;
+}
+.nradar .window-body {
+    background-image: url('../images/bg.jpeg');
+    background-color:black!important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    background-position: center;
 }
 .profbody h5 {
     font-size:20px; 
@@ -69,7 +75,6 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed; 
     background-position: center;
-    backdrop-filter: blur(10px);
 }
 
 #overlays {

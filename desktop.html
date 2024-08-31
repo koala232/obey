@@ -59,72 +59,14 @@
             display: none;
         }
 
-        .restore-text {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 48px;
-            font-weight: bold;
-            cursor: default;
-            animation: rainbow 10s infinite, fadeIn 3s ease-in-out;
-        }
-
-        .restore-text.glow {
-            animation: rainbow 2s infinite, fadeIn 1s ease-in-out;
-        }
-
-        
-        .new-window {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 250px;
-            background: rgba(255, 255, 255, 0); 
-            border: none; 
-            border-radius: 0px;
-            box-shadow: 0 0px 0px rgba(0, 0, 0, 0.2);
-            padding: 0px;
-            cursor: default; 
-            user-select: none; 
-        }
-
-        .new-window:active {
-            cursor: default; 
-        }
-
-        .title-bar {
-            padding: 5px;
-            cursor: default;
-            background: rgba(255, 255, 255, 0); 
-            border: none; 
-        }
-
-        .window-body {
-            background: rgba(255, 255, 255, 0); 
-            padding: 0; 
-        }
-
         .window-body p {
             color: black; 
             margin: 0; 
         }
 
-        
-        .profwin {
-            background: rgba(255, 255, 255, 0); 
-            border: none; 
-            border-radius: 8px;
-            box-shadow: none; 
+        .nradar {
+            position: absolute;
         }
-
-        .profbody {
-            background: rgba(255, 255, 255, 0); 
-            padding: 16px;
-        }
-
     </style>
 </head>
 <body>
@@ -151,9 +93,9 @@ $$ | \_/ $$ |\$$$$$$  |$$ |  $$ |\$$$$$$$\ \$$$$$$$ |      $$ | \_/ $$ |$$ |  \$
                     <div class="title-bar">
                         <div class="title-bar-text rainbow-text">obey.exe</div>
                         <div class="title-bar-controls">
-                            <button aria-label="Minimize" id="minimizeBtn"></button>
-                            <button aria-label="Maximize" id="maximizeBtn"></button>
-                            <button aria-label="Close" id="closeBtn"></button>
+                            <button aria-label="Minimize" id="mainMin"></button>
+                            <button aria-label="Maximize" id="mainMax"></button>
+                            <button aria-label="Close" id="mainClose"></button>
                         </div>
                     </div>
                     <div class="window-body profbody has-space">
@@ -161,125 +103,105 @@ $$ | \_/ $$ |\$$$$$$  |$$ |  $$ |\$$$$$$$\ \$$$$$$$ |      $$ | \_/ $$ |$$ |  \$
                             <img src="./images/obey.png" style="height:120px;border-radius:5px;">
                         </a>
                         <h5 class="rainbow-text"><strong>obey</strong></h5>
-                        <p><a href="https://t.me/izintelligencezone" target="_blank" style="color: gold;" class="rainbow-text">IZ</a></p>
+                        <p style="margin-bottom:10px;"><a href="https://t.me/izintelligencezone" target="_blank" style="color: gold;" class="rainbow-text">IZ</a></p>
                         <a href="https://t.me/a22cw" style="z-index:9999!important;" target="_blank">
-                            <img style="height:25px;margin-top:-50px;" src="./icon/telegram.png">
+                            <img style="height:25px;margin-top:-20px;" src="./icon/telegram.png">
                         </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <div id="restoreText" class="restore-text glow rainbow-text">obey</div>
     
     <div class="audwin" style="max-width: 650px">
-      <div class="audio-controls">
-        <p style="font-size:13px;margin-bottom:5px;" class="rainbow-text">Now Playing:</p>
-          <div id="songInfo" class="text-center rainbow-text">
-              <div id="artist">Artist</div>&nbsp;-&nbsp;<div id="songTitle">Song</div>
-          </div>
-          <div class="controls" style="margin-top:10px;margin-bottom:7px;">
-              <a onclick="previousAudio()" style="margin-right:10px;"><img src="./icon/back.png"></a>
-              <a id="playPauseButton" onclick="togglePlayPause()" style="margin-right:10px;"><img src="./icon/pause.png"></a>
-              <a onclick="nextAudio()"><img src="./icon/next.png"></a>
-          </div>
-      </div>
-    <audio id="audio"></audio>
-    <script src="./js/mzik.js"></script>
+        <div class="audio-controls">
+            <p style="font-size:13px;margin-bottom:5px;" class="rainbow-text">Now Playing:</p>
+            <div id="songInfo" class="text-center rainbow-text">
+                <div id="artist">Artist</div>&nbsp;-&nbsp;<div id="songTitle">Song</div>
+            </div>
+            <div class="controls" style="margin-top:10px;margin-bottom:7px;">
+                <a onclick="previousAudio()" style="margin-right:10px;"><img src="./icon/back.png"></a>
+                <a id="playPauseButton" onclick="togglePlayPause()" style="margin-right:10px;"><img src="./icon/pause.png"></a>
+                <a onclick="nextAudio()"><img src="./icon/next.png"></a>
+            </div>
+        </div>
+        <audio id="audio"></audio>
+        <script src="./js/mzik.js"></script>
 
-    
-    <div id="newWindow" class="window new-window hidden">
-      <div class="title-bar">
-        <div class="title-bar-text">
-          nigger.exe
+        <div class="window glass active nradar" style="max-width: 300px; display:none;">
+            <div class="title-bar nDrag">
+                <div class="title-bar-text">Nigger Radar.exe</div>
+            </div>
+            <div class="window-body has-space">
+                <p style="margin-top:5px;">are you a nigger?</p>
+                <img src="./icon/kfc.png" style="height:70px;"><img src="./icon/kfc.png" style="height:70px;"><img src="./icon/kfc.png" style="height:70px;">
+                <section class="field-row" style="justify-content: flex-end; margin-top:10px;">
+                    <button class="default nBtn">Yes</button>
+                    <button class="nBtn">Yes</button>
+                </section>
+            </div>
         </div>
-        <div class="title-bar-controls">
-        </div>
-      </div>
-      <div class="window-body has-space">
-        <p>are you a nigger?</p>
-        <section class="field-row" style="justify-content: flex-end">
-          <button id="okButton" class="default">Yes</button>
-          <button id="cancelButton">Yes</button>
-        </section>
-      </div>
     </div>
 
     <script>
-        
-        function showNewWindow() {
-            document.getElementById('newWindow').classList.remove('hidden');
-        }
+        document.addEventListener('DOMContentLoaded', () => {
+            const nradar = document.querySelector('.nradar');
+            
+            document.getElementById('mainMin').addEventListener('click', () => {
+                nradar.style.display = 'block';
+            });
 
-       
-        function hideNewWindow() {
-            document.getElementById('newWindow').classList.add('hidden');
-        }
+            document.getElementById('mainMax').addEventListener('click', () => {
+                nradar.style.display = 'block';
+            });
 
-        
-        document.getElementById('minimizeBtn').addEventListener('click', function() {
-            showNewWindow();
-        });
+            document.getElementById('mainClose').addEventListener('click', () => {
+                nradar.style.display = 'block';
+            });
 
-        document.getElementById('maximizeBtn').addEventListener('click', function() {
-            showNewWindow();
-        });
+            document.querySelectorAll('.nBtn').forEach(button => {
+                button.addEventListener('click', () => {
+                    nradar.style.display = 'none';
+                });
+            });
 
-        document.getElementById('closeBtn').addEventListener('click', function() {
-            showNewWindow();
-        });
+            dragElement(document.querySelector('.nradar'));
 
-        
-        document.getElementById('okButton').addEventListener('click', function() {
-            hideNewWindow();
-        });
+            function dragElement(elmnt) {
+                let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
 
-        document.getElementById('cancelButton').addEventListener('click', function() {
-            hideNewWindow();
-        });
+                const header = elmnt.querySelector('.title-bar.nDrag');
+                if (header) {
+                    header.onmousedown = dragMouseDown;
+                } else {
+                    elmnt.onmousedown = dragMouseDown;
+                }
 
-        
-        document.getElementById('restoreText').addEventListener('click', function() {
-            document.getElementById('window').style.display = 'block';
-            document.getElementById('restoreText').style.display = 'none';
-        });
+                function dragMouseDown(e) {
+                    e = e || window.event;
+                    e.preventDefault();
+                    pos3 = e.clientX;
+                    pos4 = e.clientY;
+                    document.onmouseup = closeDragElement;
+                    document.onmousemove = elementDrag;
+                }
 
-        
-        document.addEventListener('fullscreenchange', function() {
-            if (document.fullscreenElement) {
-                showNewWindow();
+                function elementDrag(e) {
+                    e = e || window.event;
+                    e.preventDefault();
+                    pos1 = pos3 - e.clientX;
+                    pos2 = pos4 - e.clientY;
+                    pos3 = e.clientX;
+                    pos4 = e.clientY;
+                    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+                    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+                }
+
+                function closeDragElement() {
+                    document.onmouseup = null;
+                    document.onmousemove = null;
+                }
             }
-        });
-
-        
-        const newWindow = document.getElementById('newWindow');
-        const titleBar = newWindow.querySelector('.title-bar');
-
-        let isDragging = false;
-        let startX, startY, startLeft, startTop;
-
-        titleBar.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            startX = e.clientX;
-            startY = e.clientY;
-            startLeft = newWindow.offsetLeft;
-            startTop = newWindow.offsetTop;
-            document.body.style.cursor = 'default';
-        });
-
-        document.addEventListener('mousemove', (e) => {
-            if (isDragging) {
-                const deltaX = e.clientX - startX;
-                const deltaY = e.clientY - startY;
-                newWindow.style.left = `${startLeft + deltaX}px`;
-                newWindow.style.top = `${startTop + deltaY}px`;
-            }
-        });
-
-        document.addEventListener('mouseup', () => {
-            isDragging = false;
-            document.body.style.cursor = 'default';
         });
     </script>
 </body>
