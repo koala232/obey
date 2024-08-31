@@ -67,7 +67,7 @@
             transform: translate(-50%, -50%);
             font-size: 48px;
             font-weight: bold;
-            cursor: pointer;
+            cursor: default;
             animation: rainbow 10s infinite, fadeIn 3s ease-in-out;
         }
 
@@ -87,17 +87,17 @@
             border-radius: 0px;
             box-shadow: 0 0px 0px rgba(0, 0, 0, 0.2);
             padding: 0px;
-            cursor: grab; 
+            cursor: default; 
             user-select: none; 
         }
 
         .new-window:active {
-            cursor: grabbing; 
+            cursor: default; 
         }
 
         .title-bar {
             padding: 5px;
-            cursor: grab;
+            cursor: default;
             background: rgba(255, 255, 255, 0); 
             border: none; 
         }
@@ -195,12 +195,7 @@ $$ | \_/ $$ |\$$$$$$  |$$ |  $$ |\$$$$$$$\ \$$$$$$$ |      $$ | \_/ $$ |$$ |  \$
           nigger.exe
         </div>
 
-        <div class="title-bar-controls">
-          <button aria-label="Minimize" onclick="hideNewWindow()"></button>
-          <button aria-label="Maximize" onclick="hideNewWindow()"></button>
-          <button aria-label="Close" onclick="hideNewWindow()"></button>
-        </div>
-      </div>
+
       <div class="window-body has-space">
         <p>are you a nigger?</p>
         <section class="field-row" style="justify-content: flex-end">
@@ -269,7 +264,7 @@ $$ | \_/ $$ |\$$$$$$  |$$ |  $$ |\$$$$$$$\ \$$$$$$$ |      $$ | \_/ $$ |$$ |  \$
             startY = e.clientY;
             startLeft = newWindow.offsetLeft;
             startTop = newWindow.offsetTop;
-            document.body.style.cursor = 'grabbing';
+            document.body.style.cursor = 'default';
         });
 
         document.addEventListener('mousemove', (e) => {
