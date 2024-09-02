@@ -2,19 +2,9 @@ var audio = document.getElementById("audio");
 var playPauseButton = document.getElementById("playPauseButton");
 var audioFiles = [
         {
-        src: "https://files.catbox.moe/6vdb6m.mp3",
-        artist: "Yeat",
-        song: "Twizzy Rich"
-        },
-        {
-        src: "https://files.catbox.moe/q17cu1.mp3",
-        artist: "Offset, Metro Boomin",
-        song: "Ric Flair Drip"
-        },
-        {
-        src: "https://files.catbox.moe/tgk3hf.mp3",
-        artist: "Lil Double 0",
-        song: "Life"
+        src: "https://files.catbox.moe/xnwimc.mp3",
+        artist: "Immortal Technique",
+        song: "Dance With the Devil"
         },
 ];
 
