@@ -290,37 +290,4 @@ desktop {
         text-align: left !important;
         margin-left: 0;
     }
-/* Flexbox container for centering */
-.centered-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100vh; /* Full height of the viewport */
-    width: 100vw; /* Full width of the viewport */
-    text-align: center;
-    margin: 0; /* Remove any default margin */
-    padding: 0; /* Remove any default padding */
-    box-sizing: border-box; /* Ensure padding does not affect centering */
-    overflow: hidden; /* Prevent any overflow */
-}
-
-/* Flexbox child content to maintain proper alignment */
-.centered-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-/* Image styling for centering and responsiveness */
-.centered-image {
-    max-width: 100%; /* Responsive scaling */
-    height: auto; /* Maintain aspect ratio */
-    margin: 0 auto; /* Center horizontally */
-    display: block; /* Block-level for centering */
-}
-
-
-    }
 }
