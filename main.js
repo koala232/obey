@@ -46,7 +46,7 @@ function deleting() {
 }
 
 function changeTitle() {
-  const titles = ["Sped.lol", "K.Dot", "Have Fun", "Kung Fu Kenny", "King Kunta", "Ripcord", "God is Good"];
+  const titles = ["obey", "Godfather", "obey.sh", "?", "God is Good"];
   const randomIndex = Math.floor(Math.random() * titles.length);
   const randomTitle = titles[randomIndex];
   document.title = randomTitle;
