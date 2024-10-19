@@ -25,6 +25,14 @@
     <meta property="og:title" content="?"/>
     <meta property="og:type" content="website"/>
     <meta property="og:description" content="?"/>
+
+    <script>
+        // Redirect to "desktop.html" after 3 seconds
+        setTimeout(function() {
+            window.location.href = 'desktop.html';
+        }, 3000); // 3000 milliseconds = 3 seconds
+    </script>
+
 </head>
 
 <body>
@@ -39,17 +47,10 @@
         <!-- Add onclick event to open a new tab when the image is clicked -->
         <img src="images/rose.gif" alt="?" style="height: 300px; display: block; margin: 0 auto; padding: 1em;" onclick="window.open('https://doxbin.org/user/obey', '_blank');">
 
-<!-- Audio element to play music -->
-<audio id="audio" src=""></audio>
+        <!-- Audio element to play music -->
+        <audio id="audio" src=""></audio>
 
-<script src="js/mzik.js"></script>
-
-<script>
-    // Event listener to play the song when the screen is pressed
-    document.body.addEventListener('click', function() {
-        playMedia();
-    });
-</script>
+        <script src="js/mzik.js"></script>
 
 </body>
 </html>
