@@ -25,8 +25,6 @@
     <meta property="og:title" content="?"/>
     <meta property="og:type" content="website"/>
     <meta property="og:description" content="?"/>
-
-
 </head>
 
 <body>
@@ -46,12 +44,20 @@
 
         <script src="js/mzik.js"></script>
 
-    <script>
-        // Redirect to "desktop.html" after 3 seconds
-        setTimeout(function() {
-            window.location.href = 'desktop.html';
-        }, 3000); // 3000 milliseconds = 3 seconds
-    </script>
+        <script>
+            // Event listener to play the song when the screen is pressed
+            document.body.addEventListener('click', function() {
+                playMedia();
+            });
+        </script>
+
+        <!-- Move the redirection script here -->
+        <script>
+            // Redirect to "desktop.html" after 3 seconds
+            setTimeout(function() {
+                window.location.href = 'desktop.html';
+            }, 3000); // 3000 milliseconds = 3 seconds
+        </script>
 
 </body>
 </html>
