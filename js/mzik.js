@@ -2,9 +2,24 @@ var audio = document.getElementById("audio");
 var playPauseButton = document.getElementById("playPauseButton");
 var audioFiles = [
         {
-        src: "https://files.catbox.moe/xnwimc.mp3",
-        artist: "Immortal Technique",
-        song: "Dance With the Devil"
+        src: "https://files.catbox.moe/fo805m.mp3",
+        artist: "Ken Karson, Destroy Lonely",
+        song: "Murda Musik"
+        },
+        {
+        src: "https://files.catbox.moe/swfu2y.mp3",
+        artist: "22Gz",
+        song: "Twirlanta"
+        },
+        {
+        src: "https://files.catbox.moe/gbztbw.mp3",
+        artist: "BigXthaPlug",
+        song: "Mmhmm"
+        },
+        {
+        src: "https://files.catbox.moe/ebvch3.mp3",
+        artist: "Jdot Breezy",
+        song: "Tweak Shit, Pt. 2"
         },
 ];
 
