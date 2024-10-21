@@ -278,13 +278,27 @@ desktop {
         font-size: 1em;
         padding-top: 10px;
         text-align: left !important;
-    }
-    .ascii {
+.ascii {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; 
+    height: 100vh; /* Full viewport height */
+    overflow: auto; /* Handle overflow on smaller devices */
 }
+
+pre {
+    font-family: monospace;
+    text-align: center;
+    font-size: 16px; /* Base font size for larger screens */
+}
+
+/* Media query for smaller devices */
+@media (max-width: 600px) {
+    pre {
+        font-size: 12px; /* Reduce font size for smaller screens */
+    }
+}
+
 
 pre {
     font-family: monospace;
