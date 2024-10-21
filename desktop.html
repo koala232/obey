@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="https://unpkg.com/7.css">
     <link rel="stylesheet" href="./css/style.css">
     <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>
-    <title>#deadshot</title>
+    <title>#deadshot</title> <!-- Initial title -->
+    
     <style>
         @keyframes rainbow {
             0% { color: white; }
@@ -14,13 +15,12 @@
             20% { color: white; }
             30% { color: black; }
             40% { color: white; }
-            40% { color: black; }
-            50% { color: white; }
-            60% { color: black; }
-            70% { color: white; }
-            80% { color: black; }
-            90% { color: white; }
-            100% { color: black; }
+            50% { color: black; }
+            60% { color: white; }
+            70% { color: black; }
+            80% { color: white; }
+            90% { color: black; }
+            100% { color: white; }
         }
 
         @keyframes fadeIn {
@@ -131,6 +131,27 @@
             padding: 16px;
         }
     </style>
+    
+    <script>
+        // List of titles to shuffle between
+        const titles = ["#deadshot", "?", "$", "lol", "obey.sh"];
+
+        // Function to shuffle through the titles
+        function shuffleTitles() {
+            let currentIndex = 0;
+
+            setInterval(() => {
+                // Update the document title
+                document.title = titles[currentIndex];
+                // Move to the next title, loop back to the start if at the end
+                currentIndex = (currentIndex + 1) % titles.length;
+            }, 3000); // Change title every 3 seconds
+        }
+
+        // Start shuffling titles when the page loads
+        window.onload = shuffleTitles;
+    </script>
+
 </head>
 <body>
     <div class="ascii">
