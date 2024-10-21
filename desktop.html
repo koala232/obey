@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://unpkg.com/7.css">
     <link rel="stylesheet" href="./css/style.css">
     <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>
-    <title>?</title>
+    <title>#deadshot</title>
     <style>
         @keyframes rainbow {
             0% { color: white; }
@@ -14,12 +14,13 @@
             20% { color: white; }
             30% { color: black; }
             40% { color: white; }
-            50% { color: black; }
-            60% { color: white; }
-            70% { color: black; }
-            80% { color: white; }
-            90% { color: black; }
-            100% { color: white; }
+            40% { color: black; }
+            50% { color: white; }
+            60% { color: black; }
+            70% { color: white; }
+            80% { color: black; }
+            90% { color: white; }
+            100% { color: black; }
         }
 
         @keyframes fadeIn {
@@ -27,15 +28,8 @@
             100% { opacity: 1; }
         }
 
-        body {
-            background-image: url('./images/fortnut.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-
         .rainbow-text {
-            animation: rainbow 5s infinite, fadeIn 1s ease-in-out;
+            animation: rainbow 2s infinite, fadeIn 1s ease-in-out;
         }
 
         .container {
@@ -52,7 +46,7 @@
             text-align: center;
             padding: 10px 0;
             font-size: 20px;
-            animation: rainbow 5s infinite, fadeIn 1s ease-in-out;
+            animation: rainbow 2s infinite, fadeIn 1s ease-in-out;
         }
 
         .ascii > * {
@@ -69,26 +63,78 @@
             display: none;
         }
 
-        .window-body p {
-            color: black; 
-            margin: 0; 
+        .restore-text {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 48px;
+            font-weight: bold;
+            cursor: pointer;
+            animation: rainbow 10s infinite, fadeIn 3s ease-in-out;
         }
 
-        .nradar {
-            position: absolute;
+        .restore-text.glow {
+            animation: rainbow 2s infinite, fadeIn 1s ease-in-out;
+        }
+
+        /* Draggable window styling */
+        .new-window {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 250px;
+            background: rgba(255, 255, 255, 0); /* Transparent background */
+            border: none; /* Remove border */
+            border-radius: 8px;
+            box-shadow: none; /* Remove shadow */
+            padding: 16px;
+            cursor: grab; /* Indicates draggable area */
+            user-select: none; /* Prevent text selection */
+        }
+
+        .new-window:active {
+            cursor: grabbing; /* Change cursor when dragging */
+        }
+
+        .title-bar {
+            padding: 5px;
+            cursor: grab;
+            background: rgba(255, 255, 255, 0); /* Transparent background for the title bar */
+            border: none; /* Remove border */
+            box-shadow: none; /* Remove shadow */
+        }
+
+        .window-body {
+            background: rgba(255, 255, 255, 0); /* Transparent background */
+            padding: 0; /* Remove padding to fit content */
+            border: none; /* Remove border */
+        }
+
+        .window-body p {
+            color: black; /* Make text black */
+            margin: 0; /* Remove default margin if needed */
+        }
+
+        /* Ensure that main window has transparent background */
+        .profwin {
+            background: rgba(255, 255, 255, 0); /* Transparent background */
+            border: none; /* Remove border */
+            border-radius: 8px;
+            box-shadow: none; /* Remove shadow */
+        }
+
+        .profbody {
+            background: rgba(255, 255, 255, 0); /* Transparent background */
+            padding: 16px;
         }
     </style>
 </head>
 <body>
-
-<!-- Audio Element -->
-<audio id="background-music" autoplay loop>
-    <source src="./music/background-music.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-</audio>
-
-<div class="ascii">
-    <pre class="rainbow-text">
+    <div class="ascii">
+        <pre class="rainbow-text">
   $$\ $$\         $$\                           $$\           $$\                  $$\     
   $$ \$$ \        $$ |                          $$ |          $$ |                 $$ |    
 $$$$$$$$$$\  $$$$$$$ | $$$$$$\   $$$$$$\   $$$$$$$ | $$$$$$$\ $$$$$$$\   $$$$$$\ $$$$$$\   
@@ -96,100 +142,151 @@ $$$$$$$$$$\  $$$$$$$ | $$$$$$\   $$$$$$\   $$$$$$$ | $$$$$$$\ $$$$$$$\   $$$$$$\
 $$$$$$$$$$\ $$ /  $$ |$$$$$$$$ | $$$$$$$ |$$ /  $$ |\$$$$$$\  $$ |  $$ |$$ /  $$ | $$ |    
 \_$$  $$  _|$$ |  $$ |$$   ____|$$  __$$ |$$ |  $$ | \____$$\ $$ |  $$ |$$ |  $$ | $$ |$$\ 
   $$ |$$ |  \$$$$$$$ |\$$$$$$$\ \$$$$$$$ |\$$$$$$$ |$$$$$$$  |$$ |  $$ |\$$$$$$  | \$$$$  |
-    \__|\__|   \_______| \_______| \_______| \_______|\_______/ \__|  \__| \______/   \____/   
-    </pre>
-</div>
+    \__|\__|   \_______| \_______| \_______| \_______|\_______/ \__|  \__| \______/   \____/    
+        </pre>
+    </div>
 
-<div class="container">
-    <div class="content">
-        <div class="profcont">
-            <div id="window" class="window profwin glass active">
-                <div class="title-bar">
-                    <div class="title-bar-text rainbow-text">?.exe</div>
-                    <div class="title-bar-controls">
-                        <button aria-label="Minimize" id="mainMin"></button>
-                        <button aria-label="Maximize" id="mainMax"></button>
-                        <button aria-label="Close" id="mainClose"></button>
+    <div class="container">
+        <div class="content">
+            <div class="profcont">
+                <div id="window" class="window profwin glass active">
+                    <div class="title-bar">
+                        <div class="title-bar-text rainbow-text">obey.exe</div>
+                        <div class="title-bar-controls">
+                            <button aria-label="Minimize" id="minimizeBtn"></button>
+                            <button aria-label="Maximize" id="maximizeBtn"></button>
+                            <button aria-label="Close" id="closeBtn"></button>
+                        </div>
+                    </div>
+                    <div class="window-body profbody has-space">
+                        <a href="https://doxbin.com/user/obey" target="_blank">
+                            <img src="./images/obey.png" style="height:120px;border-radius:5px;">
+                        </a>
+                        <h5 class="rainbow-text"><strong>obey</strong></h5>
+                        <p><a href="https://t.me/a22cw" target="_blank" style="color: gold;" class="rainbow-text">IZ</a></p>
+                        <a href="https://t.me/a22cw" style="z-index:9999!important;" target="_blank">
+                            <img style="height:25px;margin-top:-50px;" src="./icon/telegram.png">
+                        </a>
                     </div>
                 </div>
-                <div class="window-body profbody has-space">
-                    <a href="" target="_blank">
-                        <img src="./images/obey.jpg" style="height:120px;border-radius:5px;">
-    <div class="window glass active nradar" style="max-width: 300px; display:none;">
-        <div class="title-bar nDrag">
-            <div class="title-bar-text rainbow-text">?.exe</div>
-        </div>
-        <div class="window-body has-space">
-            <p class="margin-top:5px; rainbow-text">?</p>
-            <section class="field-row" style="justify-content: flex-end; margin-top:10px;">
-                <button class="default nBtn">?</button>
-                <button class="nBtn">?</button>
-            </section>
+            </div>
         </div>
     </div>
-</div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const nradar = document.querySelector('.nradar');
-        
-        document.getElementById('mainMin').addEventListener('click', () => {
-            nradar.style.display = 'block';
-        });
+    <div id="restoreText" class="restore-text glow rainbow-text">obey</div>
+    
+    <div class="audwin" style="max-width: 650px">
+      <div class="audio-controls">
+        <p style="font-size:13px;margin-bottom:5px;" class="rainbow-text">Now Playing:</p>
+          <div id="songInfo" class="text-center rainbow-text">
+              <div id="artist">Artist</div>&nbsp;-&nbsp;<div id="songTitle">Song</div>
+          </div>
+          <div class="controls" style="margin-top:10px;margin-bottom:7px;">
+              <a onclick="previousAudio()" style="margin-right:10px;"><img src="./icon/back.png"></a>
+              <a id="playPauseButton" onclick="togglePlayPause()" style="margin-right:10px;"><img src="./icon/pause.png"></a>
+              <a onclick="nextAudio()"><img src="./icon/next.png"></a>
+          </div>
+      </div>
+    <audio id="audio"></audio>
+    <script src="./js/mzik.js"></script>
 
-        document.getElementById('mainMax').addEventListener('click', () => {
-            nradar.style.display = 'block';
-        });
+    <!-- New Window HTML -->
+    <div id="newWindow" class="window new-window hidden">
+      <div class="title-bar">
+        <div class="title-bar-text">
+          My First Program
+        </div>
 
-        document.getElementById('mainClose').addEventListener('click', () => {
-            nradar.style.display = 'block';
-        });
+        <div class="title-bar-controls">
+          <button aria-label="Minimize" onclick="hideNewWindow()"></button>
+          <button aria-label="Maximize" onclick="hideNewWindow()"></button>
+          <button aria-label="Close" onclick="hideNewWindow()"></button>
+        </div>
+      </div>
+      <div class="window-body has-space">
+        <p>Hello, world!</p>
+        <section class="field-row" style="justify-content: flex-end">
+          <button id="okButton" class="default">OK</button>
+          <button id="cancelButton">Cancel</button>
+        </section>
+      </div>
+    </div>
 
-        document.querySelectorAll('.nBtn').forEach(button => {
-            button.addEventListener('click', () => {
-                nradar.style.display = 'none';
-            });
-        });
-
-        dragElement(document.querySelector('.nradar'));
-
-        function dragElement(elmnt) {
-            let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-
-            const header = elmnt.querySelector('.title-bar.nDrag');
-            if (header) {
-                header.onmousedown = dragMouseDown;
-            } else {
-                elmnt.onmousedown = dragMouseDown;
-            }
-
-            function dragMouseDown(e) {
-                e = e || window.event;
-                e.preventDefault();
-                pos3 = e.clientX;
-                pos4 = e.clientY;
-                document.onmouseup = closeDragElement;
-                document.onmousemove = elementDrag;
-            }
-
-            function elementDrag(e) {
-                e = e || window.event;
-                e.preventDefault();
-                pos1 = pos3 - e.clientX;
-                pos2 = pos4 - e.clientY;
-                pos3 = e.clientX;
-                pos4 = e.clientY;
-                elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-                elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-            }
-
-            function closeDragElement() {
-                document.onmouseup = null;
-                document.onmousemove = null;
-            }
+    <script>
+        // Function to show the new window
+        function showNewWindow() {
+            document.getElementById('newWindow').classList.remove('hidden');
         }
-    });
-</script>
 
+        // Function to hide the new window
+        function hideNewWindow() {
+            document.getElementById('newWindow').classList.add('hidden');
+        }
+
+        // Event listeners for Minimize, Maximize, and Close buttons
+        document.getElementById('minimizeBtn').addEventListener('click', function() {
+            showNewWindow();
+        });
+
+        document.getElementById('maximizeBtn').addEventListener('click', function() {
+            showNewWindow();
+        });
+
+        document.getElementById('closeBtn').addEventListener('click', function() {
+            showNewWindow();
+        });
+
+        // Event listeners for OK and Cancel buttons
+        document.getElementById('okButton').addEventListener('click', function() {
+            hideNewWindow();
+        });
+
+        document.getElementById('cancelButton').addEventListener('click', function() {
+            hideNewWindow();
+        });
+
+        // Restore text click event
+        document.getElementById('restoreText').addEventListener('click', function() {
+            document.getElementById('window').style.display = 'block';
+            document.getElementById('restoreText').style.display = 'none';
+        });
+
+        // Fullscreen toggle
+        document.addEventListener('fullscreenchange', function() {
+            if (document.fullscreenElement) {
+                showNewWindow();
+            }
+        });
+
+        // Draggable functionality
+        const newWindow = document.getElementById('newWindow');
+        const titleBar = newWindow.querySelector('.title-bar');
+
+        let isDragging = false;
+        let startX, startY, startLeft, startTop;
+
+        titleBar.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.clientX;
+            startY = e.clientY;
+            startLeft = newWindow.offsetLeft;
+            startTop = newWindow.offsetTop;
+            document.body.style.cursor = 'grabbing';
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                const deltaX = e.clientX - startX;
+                const deltaY = e.clientY - startY;
+                newWindow.style.left = `${startLeft + deltaX}px`;
+                newWindow.style.top = `${startTop + deltaY}px`;
+            }
+        });
+
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+            document.body.style.cursor = 'default';
+        });
+    </script>
 </body>
 </html>
