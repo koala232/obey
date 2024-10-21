@@ -21,6 +21,11 @@ var audioFiles = [
         artist: "Jdot Breezy",
         song: "Tweak Shit, Pt. 2"
         },
+        {
+        src: "https://files.catbox.moe/xo4vuv.mp3",
+        artist: "Jdot Breezy",
+        song: "Shoot It Out"
+        },
 ];
 
 var artist = document.getElementById("artist");
