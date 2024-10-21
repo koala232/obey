@@ -160,10 +160,10 @@ $$$$$$$$$$\ $$ /  $$ |$$$$$$$$ | $$$$$$$ |$$ /  $$ |\$$$$$$\  $$ |  $$ |$$ /  $$
                     </div>
                     <div class="window-body profbody has-space">
                         <a href="https://doxbin.com/user/obey" target="_blank">
-                            <img src="./images/obey.png" style="height:120px;border-radius:5px;">
+                            <img src="./images/obey.jpg" style="height:120px;border-radius:5px;">
                         </a>
                         <h5 class="rainbow-text"><strong>obey</strong></h5>
-                        <p><a href="https://t.me/a22cw" target="_blank" style="color: gold;" class="rainbow-text">IZ</a></p>
+                        <p><a href="" target="_blank" style="color: gold;" class="rainbow-text">lol</a></p>
                         <a href="https://t.me/a22cw" style="z-index:9999!important;" target="_blank">
                             <img style="height:25px;margin-top:-50px;" src="./icon/telegram.png">
                         </a>
@@ -189,104 +189,7 @@ $$$$$$$$$$\ $$ /  $$ |$$$$$$$$ | $$$$$$$ |$$ /  $$ |\$$$$$$\  $$ |  $$ |$$ /  $$
       </div>
     <audio id="audio"></audio>
     <script src="./js/mzik.js"></script>
-
-    <!-- New Window HTML -->
-    <div id="newWindow" class="window new-window hidden">
-      <div class="title-bar">
-        <div class="title-bar-text">
-          My First Program
-        </div>
-
-        <div class="title-bar-controls">
-          <button aria-label="Minimize" onclick="hideNewWindow()"></button>
-          <button aria-label="Maximize" onclick="hideNewWindow()"></button>
-          <button aria-label="Close" onclick="hideNewWindow()"></button>
-        </div>
-      </div>
-      <div class="window-body has-space">
-        <p>Hello, world!</p>
-        <section class="field-row" style="justify-content: flex-end">
-          <button id="okButton" class="default">OK</button>
-          <button id="cancelButton">Cancel</button>
-        </section>
-      </div>
-    </div>
-
-    <script>
-        // Function to show the new window
-        function showNewWindow() {
-            document.getElementById('newWindow').classList.remove('hidden');
-        }
-
-        // Function to hide the new window
-        function hideNewWindow() {
-            document.getElementById('newWindow').classList.add('hidden');
-        }
-
-        // Event listeners for Minimize, Maximize, and Close buttons
-        document.getElementById('minimizeBtn').addEventListener('click', function() {
-            showNewWindow();
-        });
-
-        document.getElementById('maximizeBtn').addEventListener('click', function() {
-            showNewWindow();
-        });
-
-        document.getElementById('closeBtn').addEventListener('click', function() {
-            showNewWindow();
-        });
-
-        // Event listeners for OK and Cancel buttons
-        document.getElementById('okButton').addEventListener('click', function() {
-            hideNewWindow();
-        });
-
-        document.getElementById('cancelButton').addEventListener('click', function() {
-            hideNewWindow();
-        });
-
-        // Restore text click event
-        document.getElementById('restoreText').addEventListener('click', function() {
-            document.getElementById('window').style.display = 'block';
-            document.getElementById('restoreText').style.display = 'none';
-        });
-
-        // Fullscreen toggle
-        document.addEventListener('fullscreenchange', function() {
-            if (document.fullscreenElement) {
-                showNewWindow();
-            }
-        });
-
-        // Draggable functionality
-        const newWindow = document.getElementById('newWindow');
-        const titleBar = newWindow.querySelector('.title-bar');
-
-        let isDragging = false;
-        let startX, startY, startLeft, startTop;
-
-        titleBar.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            startX = e.clientX;
-            startY = e.clientY;
-            startLeft = newWindow.offsetLeft;
-            startTop = newWindow.offsetTop;
-            document.body.style.cursor = 'grabbing';
-        });
-
-        document.addEventListener('mousemove', (e) => {
-            if (isDragging) {
-                const deltaX = e.clientX - startX;
-                const deltaY = e.clientY - startY;
-                newWindow.style.left = `${startLeft + deltaX}px`;
-                newWindow.style.top = `${startTop + deltaY}px`;
-            }
-        });
-
-        document.addEventListener('mouseup', () => {
-            isDragging = false;
-            document.body.style.cursor = 'default';
-        });
+        
     </script>
 </body>
 </html>
