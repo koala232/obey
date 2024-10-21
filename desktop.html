@@ -26,6 +26,7 @@
             0% { opacity: 0; }
             100% { opacity: 1; }
         }
+
         body {
             background-image: url('./images/fortnut.jpg');
             background-size: cover;
@@ -79,6 +80,13 @@
     </style>
 </head>
 <body>
+
+<!-- Audio Element -->
+<audio id="background-music" autoplay loop>
+    <source src="./music/background-music.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
 <div class="ascii">
     <pre class="rainbow-text">
   $$\ $$\         $$\                           $$\           $$\                  $$\     
@@ -92,95 +100,96 @@ $$$$$$$$$$\ $$ /  $$ |$$$$$$$$ | $$$$$$$ |$$ /  $$ |\$$$$$$\  $$ |  $$ |$$ /  $$
     </pre>
 </div>
 
-
-    <div class="container">
-        <div class="content">
-            <div class="profcont">
-                <div id="window" class="window profwin glass active">
-                    <div class="title-bar">
-                        <div class="title-bar-text rainbow-text">?.exe</div>
-                        <div class="title-bar-controls">
-                            <button aria-label="Minimize" id="mainMin"></button>
-                            <button aria-label="Maximize" id="mainMax"></button>
-                            <button aria-label="Close" id="mainClose"></button>
-                        </div>
+<div class="container">
+    <div class="content">
+        <div class="profcont">
+            <div id="window" class="window profwin glass active">
+                <div class="title-bar">
+                    <div class="title-bar-text rainbow-text">?.exe</div>
+                    <div class="title-bar-controls">
+                        <button aria-label="Minimize" id="mainMin"></button>
+                        <button aria-label="Maximize" id="mainMax"></button>
+                        <button aria-label="Close" id="mainClose"></button>
                     </div>
-                    <div class="window-body profbody has-space">
-                        <a href="" target="_blank">
-                            <img src="./images/obey.jpg" style="height:120px;border-radius:5px;">
-        <div class="window glass active nradar" style="max-width: 300px; display:none;">
-            <div class="title-bar nDrag">
-                <div class="title-bar-text rainbow-text">?.exe</div>
-            </div>
-            <div class="window-body has-space">
-                <p class="margin-top:5px; rainbow-text">?</p>
-                <section class="field-row" style="justify-content: flex-end; margin-top:10px;">
-                    <button class="default nBtn">?</button>
-                    <button class="nBtn">?</button>
-                </section>
-            </div>
+                </div>
+                <div class="window-body profbody has-space">
+                    <a href="" target="_blank">
+                        <img src="./images/obey.jpg" style="height:120px;border-radius:5px;">
+    <div class="window glass active nradar" style="max-width: 300px; display:none;">
+        <div class="title-bar nDrag">
+            <div class="title-bar-text rainbow-text">?.exe</div>
+        </div>
+        <div class="window-body has-space">
+            <p class="margin-top:5px; rainbow-text">?</p>
+            <section class="field-row" style="justify-content: flex-end; margin-top:10px;">
+                <button class="default nBtn">?</button>
+                <button class="nBtn">?</button>
+            </section>
         </div>
     </div>
+</div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const nradar = document.querySelector('.nradar');
-            
-            document.getElementById('mainMin').addEventListener('click', () => {
-                nradar.style.display = 'block';
-            });
-
-            document.getElementById('mainMax').addEventListener('click', () => {
-                nradar.style.display = 'block';
-            });
-
-            document.getElementById('mainClose').addEventListener('click', () => {
-                nradar.style.display = 'block';
-            });
-
-            document.querySelectorAll('.nBtn').forEach(button => {
-                button.addEventListener('click', () => {
-                    nradar.style.display = 'none';
-                });
-            });
-
-            dragElement(document.querySelector('.nradar'));
-
-            function dragElement(elmnt) {
-                let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-
-                const header = elmnt.querySelector('.title-bar.nDrag');
-                if (header) {
-                    header.onmousedown = dragMouseDown;
-                } else {
-                    elmnt.onmousedown = dragMouseDown;
-                }
-
-                function dragMouseDown(e) {
-                    e = e || window.event;
-                    e.preventDefault();
-                    pos3 = e.clientX;
-                    pos4 = e.clientY;
-                    document.onmouseup = closeDragElement;
-                    document.onmousemove = elementDrag;
-                }
-
-                function elementDrag(e) {
-                    e = e || window.event;
-                    e.preventDefault();
-                    pos1 = pos3 - e.clientX;
-                    pos2 = pos4 - e.clientY;
-                    pos3 = e.clientX;
-                    pos4 = e.clientY;
-                    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-                    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-                }
-
-                function closeDragElement() {
-                    document.onmouseup = null;
-                    document.onmousemove = null;
-                }
-            }
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const nradar = document.querySelector('.nradar');
+        
+        document.getElementById('mainMin').addEventListener('click', () => {
+            nradar.style.display = 'block';
         });
+
+        document.getElementById('mainMax').addEventListener('click', () => {
+            nradar.style.display = 'block';
+        });
+
+        document.getElementById('mainClose').addEventListener('click', () => {
+            nradar.style.display = 'block';
+        });
+
+        document.querySelectorAll('.nBtn').forEach(button => {
+            button.addEventListener('click', () => {
+                nradar.style.display = 'none';
+            });
+        });
+
+        dragElement(document.querySelector('.nradar'));
+
+        function dragElement(elmnt) {
+            let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+
+            const header = elmnt.querySelector('.title-bar.nDrag');
+            if (header) {
+                header.onmousedown = dragMouseDown;
+            } else {
+                elmnt.onmousedown = dragMouseDown;
+            }
+
+            function dragMouseDown(e) {
+                e = e || window.event;
+                e.preventDefault();
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                document.onmouseup = closeDragElement;
+                document.onmousemove = elementDrag;
+            }
+
+            function elementDrag(e) {
+                e = e || window.event;
+                e.preventDefault();
+                pos1 = pos3 - e.clientX;
+                pos2 = pos4 - e.clientY;
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+                elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+            }
+
+            function closeDragElement() {
+                document.onmouseup = null;
+                document.onmousemove = null;
+            }
+        }
+    });
+</script>
+
 </body>
 </html>
