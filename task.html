@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/xp.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.2.0/css/all.css">
+    <link rel="stylesheet" href="./css/task.css">
+    <style>
+        .audwin {
+            display: none; 
+            position: fixed; 
+            bottom: 30px;
+            right: 0; 
+            margin: 0; 
+            max-width: 250px;
+            z-index: 1000; 
+        }
+
+        .controls a img {
+            height: 13px;
+            cursor: pointer;
+        }
+
+        .controls {
+            user-select: none;
+        }
+
+        #songInfo {
+            display: flex;
+        }
+
+        #songTitle {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        li {
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+    <section id="desktop">
+        <div id="taskbar">
+            <div class="background sliced vertical">
+                <div class="row top"></div>
+                <div class="row middle"></div>
+                <div class="row bottom"></div>
+            </div>
+            <div id="start-button">
+                <div class="container">
+                    <div class="background sliced">
+                        <div class="column left">
+                            <div class="row top"></div>
+                            <div class="row middle"></div>
+                            <div class="row bottom"></div>
+                        </div>
+                        <div class="column middle">
+                            <div class="row top"></div>
+                            <div class="row middle"></div>
+                            <div class="row bottom"></div>
+                        </div>
+                        <div class="column right">
+                            <div class="row top"></div>
+                            <div class="row middle"></div>
+                            <div class="row bottom"></div>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <span class="icon"><img src="./images/WinLogo.png" /></span>
+                        <span class="text">start</span>
+                    </div>
+                    <div class="overlay" title="Clique aqui para começar"></div>
+                </div>
+            </div>
+            <div id="task-band"></div>
+            <div id="tray-notify">
+                <div class="container">
+                    <div class="background sliced">
+                        <div class="column left">
+                            <div class="row top"></div>
+                            <div class="row middle"></div>
+                            <div class="row bottom"></div>
+                        </div>
+                        <div class="column middle">
+                            <div class="row top"></div>
+                            <div class="row middle"></div>
+                            <div class="row bottom"></div>
+                        </div>
+                        <div class="column right">
+                            <div class="row top"></div>
+                            <div class="row middle"></div>
+                            <div class="row bottom"></div>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <div class="clock">
+                            <div class="text" id="time">00:00 AM</div>
+                        </div>
+                        <p id="soundclic"><img src="./images/sound.png" style="width:20px;height:20px;"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="window audwin"  style="width: 230px">
+            <div class="title-bar">
+                <div class="title-bar-text">Volume</div>
+            </div>
+            <div class="window-body audio-controls">
+                <p> Now playing:</p>
+                <div id="songInfo">
+                    <div id="artist">Artist</div>&nbsp;-&nbsp;<div id="songTitle">Song</div>
+                </div>
+                <div id="currentTime">0:00</div>
+                <input id="range26" type="range" min="1" max="100" value="100" />
+            </div>
+            <div class="status-bar controls">
+                <p onclick="previousAudio()" style="text-align:center;" class="status-bar-field fa-solid fa-backward"></p>
+                <p id="playpaus" onclick="togglePlayPause()" style="text-align:center;" class="status-bar-field fa-solid fa-pause"></p>
+                <p onclick="nextAudio()" style="text-align:center;" class="status-bar-field fa-solid fa-forward"></p>
+            </div>
+        </div>
+    </section>
+
+    <audio id="audio"></audio>
+    <script src="./js/mzik.js"></script>
+    <script src="./js/task.js"></script>
+    <script>
+        function updateClock() {
+            const now = new Date();
+            let hours = now.getHours();
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+
+            hours = hours % 12;
+            hours = hours ? String(hours).padStart(2, '0') : '12';
+
+            document.getElementById('time').textContent = `${hours}:${minutes} ${ampm}`;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const soundClic = document.getElementById('soundclic');
+            const audioWindow = document.querySelector('.audwin');
+
+            soundClic.addEventListener('click', () => {
+                if (audioWindow.style.display === 'none' || !audioWindow.style.display) {
+                    audioWindow.style.display = 'block'; 
+                } else {
+                    audioWindow.style.display = 'none'; 
+                }
+            });
+        });
+    </script>
+</body>
+</html>
