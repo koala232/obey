@@ -1,0 +1,837 @@
+@font-face {
+    font-family: 'VCR OSD Mono';
+    src: url(../fonts/VCR_OSD_MONO_1.001.ttf);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('../images/bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    background-position: center;
+    overflow-y:hidden;
+    overflow-x:hidden;
+    background-color:black;
+}
+
+.profbody {
+    text-align:center;
+    background-image: url('../images/bg.jpg');
+    background-color:black!important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    background-position: center;
+    height:223px;
+}
+
+.nradar .window-body, .status-bar, .controls {
+    background-image: url('../images/bg.jpg');
+    background-color:black!important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    background-position: center;
+}
+.window-body * {
+    overflow:hidden;
+}
+
+img {
+    overflow:visible!important;
+}
+
+.status-bar {
+    border:none;
+    border-top:1px solid rgba(255, 255, 255, 0.648);
+}
+.profbody h5 {
+    font-size:20px; 
+    margin-top:8px;
+}
+.profbody p {
+    position:relative;bottom:15px;
+}
+.profwin {
+    width:250px;
+    margin-left:10px;
+    height:270px;
+}
+
+* {
+    color:white;
+}
+
+.profcont {
+    display: flex;
+    margin-right:10px;
+    margin-top:80px;
+}
+
+.audwin {
+    position: relative;
+    margin: 0 auto;
+    max-width: 250px;
+    bottom:540px;
+    text-align: center;
+}
+
+
+.audbody {
+    text-align:center;
+    background-image: url('../images/bg.jpg');
+    background-color:black!important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    background-position: center;
+}
+
+#overlays {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.995);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    font-size: 20px;
+    cursor: pointer;
+    transition: opacity 0.5s ease; 
+    opacity: 1; 
+}
+
+#overlays.fade-out {
+    opacity: 0; 
+    cursor:default;
+    z-index:0;
+}
+
+.audio-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    flex-direction: column;
+}
+
+.controls a img {
+    height: 13px;
+    cursor: pointer;
+}
+.controls {
+    user-select: none;
+}
+
+#songInfo {
+    font-size: 12px;
+}
+
+#songTitle {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#songInfo {
+    display:flex;
+}
+
+#hoaLink {
+    color: white;
+    font-size: 15px;
+    text-decoration: underline;
+    cursor: pointer;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#hoaDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 60vh; 
+}
+
+.profcont * {
+    z-index:1;
+}
+
+.logincent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0);
+    z-index: 9999; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.window-wrapper {
+  position: absolute;
+  touch-action: none;
+  user-select: none;
+
+  min-width: 320px;
+}
+.glass::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: block;
+}
+.glassdd::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    filter: blur(10px);
+    display: block;
+  }
+.window-wrapper.snapping {
+  transition-property: width, height, top, left, opacity;
+  transition-duration: 0.3s;
+}
+.window-wrapper.fading-in {
+  transition-property: opacity, transform;
+  transition-duration: 0.15s;
+}
+.window-wrapper.fading-out {
+  transition-property: opacity, transform;
+  transition-duration: 0.3s;
+}
+.window {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.no-padding .window-body {
+  padding: 0;
+}
+.window-body {
+  overflow: auto;
+}
+
+.window-body,
+.window-body > div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.desktop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("https://picsum.photos/2048/1536")
+    center center;
+  display: flex;
+  flex-direction: column;
+}
+
+.window-container {
+  display: flex;
+  flex: 1;
+  position: relative;
+  overflow-y: auto; /* at least dont hide stuff on mobile */
+  overflow-x: hidden;
+}
+.window-container::-webkit-scrollbar-track:vertical,
+#spotlight-results::-webkit-scrollbar-track:vertical {
+  /* fix weird scrollbar bug on mobile chrome, maybe only on my phone 🤷‍♂️ */
+  margin-top: -17px;
+  margin-bottom: -17px;
+}
+.taskbar-container {
+  height: 45px;
+  border-radius: 0;
+  z-index: 9999 !important;
+}
+.taskbar-container::before {
+  border-radius: 0;
+  border-top: #fff 1px solid;
+}
+.taskbar-container .title-bar {
+  border-radius: 0;
+  width: 100%;
+  height: 100%;
+  border-top: #000 1px solid;
+  display: flex;
+  padding: 0;
+  display: flex;
+}
+.taskbar-btns {
+  height: 100%;
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  /* overflow-x: hidden; */
+}
+.taskbar-btn {
+  width: 60px;
+  height: 100%;
+  border-radius: 6px;
+  border: #000 1px solid;
+  margin-right: 4px;
+  height: calc(100% + 2px);
+  position: relative;
+  top: -1px;
+}
+.taskbar-btn > div {
+  border-radius: 6px;
+  border: rgba(255, 255, 255, 0.3) 1px solid;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  padding: 2px 0;
+}
+.taskbar-btn > div::after {
+  background: radial-gradient(
+    circle,
+    #fff 0%,
+    rgba(255, 255, 255, 0.3) 75%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: 0.3s;
+  display: block;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.taskbar-btn.active {
+  background: linear-gradient(
+    150deg,
+    #fff 0%,
+    rgba(255, 255, 255, 0.5) 30%,
+    transparent 100%
+  );
+}
+.taskbar-btn:hover > div::after {
+  opacity: 0.5;
+}
+.taskbar-btn:active > div::after {
+  opacity: 1;
+}
+.taskbar-btn img {
+  width: auto;
+  height: 100%;
+  margin: 0 auto;
+  display: block;
+  user-select: none;
+}
+.taskbar-btn .preview {
+  position: absolute;
+  top: -125px;
+  width: 200px;
+  height: 120px;
+  padding: 0;
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: 0.3s;
+}
+.taskbar-btn .preview.show {
+  opacity: 1;
+}
+.taskbar-btn .preview .title-bar {
+  padding: 5px;
+  border-radius: 5px;
+  border: 0;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.8em;
+}
+.taskbar-btn .preview .title-bar-text {
+  align-self: start;
+  margin-top: -4px;
+}
+.preview-title {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.preview-title .title-bar-controls .close {
+  min-width: 0;
+  width: 18px;
+  min-height: 14px;
+  z-index: 10;
+}
+.preview-title .title-bar-controls {
+  margin-top: -5px;
+  margin-bottom: 2px;
+}
+.taskbar-btn .preview canvas {
+  max-height: 88%;
+  max-width: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+.start-button img {
+  width: 70px;
+  user-select: none;
+}
+#spotlight-button {
+  color: #fff;
+  opacity: 0.8;
+  padding-top: 4px;
+  position: relative;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 5px;
+}
+#spotlight-button:hover {
+  opacity: 1;
+}
+#spotlight-button svg {
+  width: 20px;
+  transform: scale(-1, 1);
+  transform-origin: center;
+}
+.clock {
+  color: #fff;
+  padding: 0 5px;
+  text-align: center;
+  user-select: none;
+  position: relative;
+}
+
+.clock::after,
+#spotlight-button::after {
+  border-left: rgba(255, 255, 255, 0.5) 1px solid;
+  filter: blur(5px);
+  background: rgba(255, 255, 255, 0.4);
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: 0.1s;
+  display: block;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+.dropzone {
+  flex: 1;
+  height: 100%;
+  transition: opacity 0.1s;
+  padding: 10px;
+  opacity: 0;
+}
+
+.dropzone > div {
+  opacity: 0.7;
+  height: 100%;
+  border-radius: 6px;
+  border-color: transparent;
+  border-width: 10px;
+  pointer-events: none;
+  z-index: 99999;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.6);
+  background: linear-gradient(
+      transparent 20%,
+      hsla(0, 0%, 100%, 0.7) 40%,
+      transparent 41%
+    ),
+    linear-gradient(
+      90deg,
+      hsla(0, 0%, 100%, 0.4),
+      rgba(0, 0, 0, 0.1),
+      hsla(0, 0%, 100%, 0.2)
+    ),
+    linear-gradient(
+      55deg,
+      transparent,
+      rgba(0, 0, 0, 0.1) 20%,
+      rgba(0, 0, 0, 0.1) 50%,
+      transparent 53%
+    ),
+    transparent;
+}
+
+.dropzone-full,
+.icon-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  touch-action: none;
+}
+
+.icon-container {
+  z-index: 1;
+}
+
+.start-menu {
+  display: none;
+  position: fixed;
+  left: 0;
+  bottom: 45px;
+  width: 480px;
+  max-width: 100vw;
+  min-height: 480px;
+  min-width: 300px;
+}
+#spotlight-menu {
+  min-height: 0;
+  min-width: 0;
+  width: 300px;
+}
+#spotlight-menu .window-body {
+  min-width: 0;
+  width: 100px;
+}
+.start-menu .title-bar {
+  height: 100%;
+  background: transparent !important;
+}
+
+.start-menu .window-body {
+  height: 100%;
+  margin: 0;
+  border-radius: 6px;
+  width: 250px;
+  background: #fff;
+}
+.start-menu .menu-sidebar {
+  width: 180px;
+  max-width: 30vw;
+  padding-left: 5px;
+  display: flex;
+  align-self: stretch;
+  flex-direction: column;
+}
+.start-menu .menu-sidebar img,
+.start-menu .menu-sidebar svg {
+  width: 18px;
+  vertical-align: top;
+  margin-right: 5px;
+}
+#share-link,
+#change-wallpaper,
+#shutdown {
+  user-select: none;
+  padding-left: 16px;
+}
+.start-menu .menu-sidebar .top {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.start-menu .menu-sidebar .bottom {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+.start-menu .menu-sidebar .sep {
+  border-top: rgba(255, 255, 255, 0.3) 1px solid;
+  padding-top: 10px;
+  margin-top: 10px;
+}
+.start-menu .menu-sidebar::after {
+  background: rgba(0, 0, 0, 0.4);
+  filter: blur(5px);
+  display: block;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+.start-menu .menu-sidebar .bottom button {
+  border: rgba(255, 255, 255, 0.3) 1px solid;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.49) inset,
+    0 0 0 1px rgba(0, 0, 0, 0.47), 0 16px 0 -5px rgba(255, 255, 255, 0.12) inset,
+    0 26px 15px -20px rgba(255, 255, 255, 0.5) inset;
+}
+.start-menu .menu-sidebar .bottom button::after {
+  opacity: 0.5;
+}
+.start-menu .menu-sidebar .bottom button:hover {
+  opacity: 1;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.49) inset,
+    0 0 0 1px rgba(0, 0, 0, 0.47), 0 16px 0 -5px rgba(255, 255, 255, 0.12) inset,
+    0 26px 15px -20px rgba(255, 255, 255, 0.5) inset, 0 0 4px 1px white inset;
+}
+.start-menu .menu-sidebar button,
+.start-menu .menu-sidebar .button {
+  cursor: pointer;
+  margin-bottom: 5px;
+  color: #eee;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+  position: relative;
+  text-align: left;
+  border: transparent 1px solid;
+  padding: 5px;
+  text-shadow: 1px 1px 0 #000, 1px 1px 2px #000, 0 0 16px #000;
+}
+.start-menu .menu-sidebar button:hover,
+.start-menu .menu-sidebar .button:hover {
+  border: rgba(255, 255, 255, 0.3) 1px solid;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.49) inset,
+    0 0 0 1px rgba(0, 0, 0, 0.74), 0 0 0 2px rgba(255, 255, 255, 0.13),
+    0 20px 0 -5px rgba(255, 255, 255, 0.22) inset, 0 10px 60px -20px white inset;
+}
+.start-menu .menu-sidebar button::after,
+.start-menu .menu-sidebar .button::after {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    transparent 50%,
+    rgba(0, 0, 0, 0.5) 51%,
+    transparent 100%
+  );
+  border: rgba(0, 0, 0, 0.5) 1px solid;
+  border-radius: 3px;
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: 0.1s;
+  display: block;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+.start-menu .menu-sidebar button:hover::after,
+.start-menu .menu-sidebar .button:hover::after {
+  opacity: 1;
+}
+.start-menu .menu-sidebar button:focus,
+.start-menu .menu-sidebar .button:focus,
+.start-menu a:focus {
+  outline: 0;
+}
+.start-menu .menu-sidebar button:active,
+.start-menu .menu-sidebar .button:active {
+  background: linear-gradient(
+    150deg,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(255, 255, 255, 0.1) 30%,
+    transparent 100%
+  );
+}
+
+.desktop-icon img {
+  width: 24px;
+  align-self: center;
+  z-index: 1;
+}
+
+.desktop-icon {
+  position: absolute;
+  width: 75px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  touch-action: none;
+  user-select: none;
+  padding: 4px;
+}
+@media screen and (min-width: 374px) {
+  .desktop-icon img {
+    width: 48px;
+  }
+  .desktop-icon {
+    width: 96px;
+  }
+  .browser button svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+  .window-container {
+    overflow-y: hidden;
+  }
+  .window-container::-webkit-scrollbar-track:vertical {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+.desktop-icon > div {
+  margin-top: 3px;
+  font: 9pt Segoe UI, sans-serif;
+  color: #fff;
+  letter-spacing: 0;
+  line-height: 15px;
+  text-shadow: 1px 1px 0 #000, 1px 1px 2px #000, 0 0 16px #000;
+  text-align: center;
+  z-index: 1;
+}
+.desktop-icon::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 2.5%;
+  top: 0.5%;
+  bottom: 0;
+  right: 0;
+  transition: opacity 0.15s;
+  opacity: 0;
+  background: rgba(224, 105, 195, 0.7);
+  border-radius: 1px;
+  width: 95%;
+  height: 99%;
+}
+.focus::after {
+  opacity: 0.3;
+}
+
+.window-wrapper .window.glass > .title-bar {
+  background-size: contain;
+  background-attachment: fixed;
+}
+
+.colored::before,
+.colored > .title-bar {
+  background: #ec1db8;
+}
+
+.colored {
+  z-index: 1;
+}
+
+.custom {
+  justify-content: center;
+}
+
+.custom button {
+  padding: 0;
+}
+.custom button a,
+.custom button a:visited,
+.custom button a:active {
+  width: 100%;
+  display: block;
+  text-decoration: none;
+  color: unset;
+  padding: 0 12px;
+}
+
+.window-body pre {
+  border: 0;
+}
+
+.pet {
+  display: block !important;
+  flex: 0 !important;
+}
+
+.pet [role="tooltip"] {
+  display: block;
+  flex: 0;
+  margin-top: 10px;
+  margin-left: 35px;
+  margin-bottom: 10px;
+}
+
+.pet img {
+  width: 75px;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+#wallpaper-upload {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+}
+
+#homework-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+#spotlight-input {
+  font-size: 16px;
+  height: 30px;
+}
+
+#spotlight-results {
+  overflow: auto;
+  max-height: 50vh;
+}
+
+#spotlight-results .result {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 5px 2px;
+  border: transparent 1px solid;
+  margin-bottom: 5px;
+}
+
+#spotlight-results .result.active,
+#spotlight-results .result:hover {
+  background-color: #fce5ff;
+  border: 1px solid #e97fce;
+}
+
+#spotlight-results .result img {
+  width: 32px;
+  align-self: center;
+}
+
+#spotlight-results .result div {
+  flex: 1;
+  padding-left: 10px;
+}
+
+.spotlight-container {
+  display: flex;
+}
+
+#icon-select {
+  border: 1px solid #b335e6;
+  background-color: rgba(196, 61, 230, 0.295);
+  position: absolute;
+  touch-action: none;
+  display: none;
+}

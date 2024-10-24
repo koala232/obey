@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/7.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.2.0/css/all.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>#deadshot</title>
+
+    <style>
+        @keyframes rainbow {
+            0% { color: white; }
+            10% { color: grey; }
+            20% { color: white; }
+            30% { color: grey; }
+            40% { color: white; }
+            50% { color: grey; }
+            60% { color: white; }
+            70% { color: grey; }
+            80% { color: white; }
+            90% { color: grey; }
+            100% { color: white; }
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .rainbow-text {
+            animation: rainbow 5s infinite, fadeIn 3s ease-in-out;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .ascii pre {
+            background-color: transparent;
+            border: none;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 20px;
+            animation: rainbow 5s infinite, fadeIn 3s ease-in-out;
+        }
+
+        .ascii > * {
+            position: relative;
+            top: 25px;
+        }
+
+        .content {
+            padding: 20px;
+            min-height: 500px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .restore-text {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 48px;
+            font-weight: bold;
+            cursor: pointer;
+            animation: rainbow 5s infinite, fadeIn 3s ease-in-out;
+        }
+
+        .new-window {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 250px;
+            background: rgba(255, 255, 255, 0);
+            border: none;
+            border-radius: 8px;
+            padding: 16px;
+            cursor: grab;
+            user-select: none;
+        }
+
+        .new-window:active {
+            cursor: grabbing;
+        }
+
+        .dragttl {
+            cursor: move;
+            background: rgba(255, 255, 255, 0);
+            border: none;
+        }
+
+        .window-body {
+            padding: 0;
+            border: none;
+        }
+
+        .window-body p {
+            color: black;
+            margin: 0;
+        }
+
+        .taskbar-container {
+            position: fixed;  
+            bottom: 0;       
+            left: 0;          
+            width: 100%;      
+            height: 42px;     
+            background-color: rgba(0, 0, 0, 0.8);
+            border: none;   
+            display: flex;    
+            align-items: center; 
+            z-index: 1000;   
+        }
+
+        .audwin {
+            position: fixed; 
+            bottom: 43px; 
+            right: 0; 
+            overflow: hidden !important; 
+            z-index: 999999999!important;
+        }
+        
+        legend {
+            color: black;
+        }
+    </style>
+
+<script>
+    const titles = ["#deadshot", "?", "$", "lol", "obey.sh"];
+
+    function shuffleTitles() {
+        let currentIndex = 0;
+
+        setInterval(() => {
+            document.title = titles[currentIndex];
+            currentIndex = (currentIndex + 1) % titles.length;
+        }, 500);
+    }
+
+    window.onload = () => {
+        shuffleTitles();
+    };
+</script>
+
+</head>
+<body>
+    <div class="ascii">
+        <pre class="rainbow-text">
+  $$\ $$\         $$\                           $$\           $$\                  $$\     
+  $$ \$$ \        $$ |                          $$ |          $$ |                 $$ |    
+$$$$$$$$$$\  $$$$$$$ | $$$$$$\   $$$$$$\   $$$$$$$ | $$$$$$$\ $$$$$$$\   $$$$$$\ $$$$$$\   
+\_$$  $$   |$$  __$$ |$$  __$$\  \____$$\ $$  __$$ |$$  _____|$$  __$$\ $$  __$$\\_$$  _|  
+$$$$$$$$$$\ $$ /  $$ |$$$$$$$$ | $$$$$$$ |$$ /  $$ |\$$$$$$\  $$ |  $$ |$$ /  $$ | $$ |    
+\_$$  $$  _|$$ |  $$ |$$   ____|$$  __$$ |$$ |  $$ | \____$$\ $$ |  $$ |$$ |  $$ | $$ |$$\ 
+  $$ |$$ |  \$$$$$$$ |\$$$$$$$\ \$$$$$$$ |\$$$$$$$ |$$$$$$$  |$$ |  $$ |\$$$$$$  | \$$$$  |
+     \__|\__|   \_______| \_______| \_______| \_______|\_______/ \__|  \__| \______/   \____/    
+        </pre>
+    </div>
+    <div class="container">
+        <div class="content">
+            <div class="profcont">
+                <div id="window" class="window profwin glass active" style="width:250px;">
+                    <div class="title-bar dragttl">
+                        <div class="title-bar-text rainbow-text">obey.exe</div>
+                        <div class="title-bar-controls">
+                            <button aria-label="Minimize" id="minimizeBtn"></button>
+                            <button aria-label="Maximize" id="maximizeBtn"></button>
+                            <button aria-label="Close" id="closeBtn"></button>
+                        </div>
+                    </div>
+                    <div class="window-body profbody has-space">
+                        <a href="https://doxbin.com/user/obey" target="_blank">
+                            <img src="./images/deadshot.jpg" style="height:120px;border-radius:5px;">
+                        </a>
+                        <h5 class="rainbow-text"><strong>obey</strong></h5>
+                        <p><a href="" target="_blank" style="color: gold;" class="rainbow-text">lol</a></p>
+                        <a href="https://t.me/a22cw" style="z-index:9999999999!important;overflow:visible!important;" target="_blank">
+                            <img style="height:25px;margin-top:-50px;overflow:visible!important;" src="./icon/telegram.png">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="restoreText" class="restore-text glow rainbow-text">obey</div>
+
+    <div class="window glass audwin"  style="width: 260px;height:155px;display:none;">
+        <div class="title-bar dragttl">
+            <div class="title-bar-text">Volume</div>
+        </div>
+        <div class="window-body audbody audio-controls" style="height:102px;">
+            <p style="margin-left:5px;color:white;margin-top:13px;">Now playing:</p>
+            <div id="songInfo" style="display:flex;flex-direction:row;margin-left:5px;">
+                <div id="artist">Artist</div>&nbsp;-&nbsp;<div id="songTitle">Song</div>
+            </div>
+            <div style="margin-left:5px;" id="currentTime">0:00</div>
+            <input id="range26" type="range" min="1" max="100" value="100" style="width:210px;"/>
+        </div>
+        <div class="status-bar controls">
+            <p onclick="previousAudio()" style="text-align:center;" class="status-bar-field fa-solid fa-backward"></p>
+            <p id="playpaus" onclick="togglePlayPause()" style="text-align:center;" class="status-bar-field fa-solid fa-pause"></p>
+            <p onclick="nextAudio()" style="text-align:center;" class="status-bar-field fa-solid fa-forward"></p>
+        </div>
+    </div>
+
+    <div class="glass glassdd taskbar-container window"> 
+        <div class="title-bar" style="cursor:default!important;"> 
+            <div class="start-button"> 
+                <img id="start-button" src="./images/startReg.png"> 
+            </div> 
+            <div class="clock" id="clock" style="display:flex;margin-top:15px;">
+                <p id="soundclic"><img src="./images/sound.png" style="width:20px;height:20px;margin-right:15px;"></p>
+                <span id="timeDateDisplay"></span>
+            </div>      
+        </div>
+    </div>
+
+    <div id="overlay">
+        <div class="window active" style="width: 300px;height:155px;">
+            <div class="title-bar">
+                <div class="title-bar-text">User Login</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Minimize"></button>
+                    <button aria-label="Maximize"></button>
+                    <button aria-label="Close"></button>
+                </div>
+            </div>
+            <div class="window-body has-space">
+                <fieldset>
+                    <legend style="text-align:center;">Login</legend>
+                    <p style="text-align:center;">Select a user to login to</p>
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <select>
+                            <option style="margin:auto;">Obey</option>
+                        </select>
+                    </div>
+                </fieldset>
+                <div class="centercont" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                    <button id="playpaus" style="width:75px;" onclick="togglePlayPause(); closeOverlay();">OK</button>
+                </div>                
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const dateOptions = { year: 'numeric', month: '2-digit', day: '2-digit' };
+            const timeOptions = { hour: 'numeric', minute: 'numeric', hour12: true };
+            
+            const dateString = now.toLocaleDateString('en-US', dateOptions);
+            const timeString = now.toLocaleTimeString('en-US', timeOptions);
+            
+            document.getElementById("timeDateDisplay").innerHTML = `<div>${timeString}</div><div>${dateString}</div>`;
+        }
+        
+        window.onload = () => {
+            updateClock(); 
+            setInterval(updateClock, 60000); 
+        };
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const soundClic = document.getElementById('soundclic');
+            const audioWindow = document.querySelector('.audwin');
+
+            soundClic.addEventListener('click', () => {
+                if (audioWindow.style.display === 'none' || !audioWindow.style.display) {
+                    audioWindow.style.display = 'block'; 
+                } else {
+                    audioWindow.style.display = 'none'; 
+                }
+            });
+        });
+    </script>
+    <script>
+        function closeOverlay() {
+            document.getElementById('overlay').style.display = 'none';
+        }
+    
+        document.querySelector('.title-bar-controls button[aria-label="Close"]').addEventListener('click', function() {
+            document.getElementById('overlay').style.display = 'none';
+        });
+    </script>    
+<script>
+    const windowElement = document.getElementById('window');
+    const titleBar = windowElement.querySelector('.dragttl');
+
+    let isDragging = false;
+    let offsetX = 0, offsetY = 0;
+
+    // Store the original height and width once at load time
+    const originalHeight = windowElement.offsetHeight;
+    const originalWidth = windowElement.offsetWidth;
+
+    titleBar.addEventListener('mousedown', (e) => {
+        e.preventDefault(); // Prevent default actions like text selection
+
+        isDragging = true;
+
+        // Calculate the initial offset between cursor and window position
+        offsetX = e.clientX - windowElement.getBoundingClientRect().left;
+        offsetY = e.clientY - windowElement.getBoundingClientRect().top;
+
+        // Fix the position to avoid layout changes
+        windowElement.style.position = 'absolute';
+        windowElement.style.width = `${originalWidth}px`;  // Fix width
+        windowElement.style.height = `${originalHeight}px`; // Fix height
+        windowElement.style.zIndex = 1000;  // Keep window on top while dragging
+    });
+
+    document.addEventListener('mousemove', (e) => {
+        if (isDragging) {
+            // Calculate the new position based on mouse movement
+            const newX = e.clientX - offsetX;
+            const newY = e.clientY - offsetY;
+
+            // Move the window to the new position
+            windowElement.style.left = `${newX}px`;
+            windowElement.style.top = `${newY}px`;
+        }
+    });
+
+    document.addEventListener('mouseup', () => {
+        isDragging = false; // Stop dragging when mouse is released
+    });
+</script>
+
+    <audio id="audio"></audio>
+    <script src="./js/mzik.js"></script>
+</body>
+</html>
