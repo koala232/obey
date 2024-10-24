@@ -3,10 +3,14 @@
     src: url(../fonts/VCR_OSD_MONO_1.001.ttf);
 }
 
+:root {
+  --backgroundi: url('../images/bg.jpg');
+}
+
 body {
     margin: 0;
     padding: 0;
-    background-image: url('../images/bg.jpg');
+    background-image: var(--backgroundi);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed; 
@@ -18,7 +22,7 @@ body {
 
 .profbody {
     text-align:center;
-    background-image: url('../images/bg.jpg');
+    background-image: var(--backgroundi);
     background-color:black!important;
     background-size: cover;
     background-repeat: no-repeat;
@@ -28,8 +32,8 @@ body {
 }
 
 .nradar .window-body, .status-bar, .controls {
-    background-image: url('../images/bg.jpg');
-    background-color:black!important;
+  background-image: var(--backgroundi);
+  background-color:black!important;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed; 
@@ -81,7 +85,7 @@ img {
 
 .audbody {
     text-align:center;
-    background-image: url('../images/bg.jpg');
+    background-image: var(--backgroundi);
     background-color:black!important;
     background-size: cover;
     background-repeat: no-repeat;

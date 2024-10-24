@@ -241,7 +241,7 @@ $$$$$$$$$$\ $$ /  $$ |$$$$$$$$ | $$$$$$$ |$$ /  $$ |\$$$$$$\  $$ |  $$ |$$ /  $$
                     <p style="text-align:center;">Select a user to login to</p>
                     <div style="display: flex; justify-content: center; align-items: center;">
                         <select>
-                            <option style="margin:auto;">Obey</option>
+                            <option style="margin:auto;">obey</option>
                         </select>
                     </div>
                 </fieldset>
@@ -299,40 +299,35 @@ $$$$$$$$$$\ $$ /  $$ |$$$$$$$$ | $$$$$$$ |$$ /  $$ |\$$$$$$\  $$ |  $$ |$$ /  $$
     let isDragging = false;
     let offsetX = 0, offsetY = 0;
 
-    // Store the original height and width once at load time
     const originalHeight = windowElement.offsetHeight;
     const originalWidth = windowElement.offsetWidth;
 
     titleBar.addEventListener('mousedown', (e) => {
-        e.preventDefault(); // Prevent default actions like text selection
+        e.preventDefault(); 
 
         isDragging = true;
 
-        // Calculate the initial offset between cursor and window position
         offsetX = e.clientX - windowElement.getBoundingClientRect().left;
         offsetY = e.clientY - windowElement.getBoundingClientRect().top;
 
-        // Fix the position to avoid layout changes
         windowElement.style.position = 'absolute';
-        windowElement.style.width = `${originalWidth}px`;  // Fix width
-        windowElement.style.height = `${originalHeight}px`; // Fix height
-        windowElement.style.zIndex = 1000;  // Keep window on top while dragging
+        windowElement.style.width = `${originalWidth}px`;  
+        windowElement.style.height = `${originalHeight}px`; 
+        windowElement.style.zIndex = 1000;  
     });
 
     document.addEventListener('mousemove', (e) => {
         if (isDragging) {
-            // Calculate the new position based on mouse movement
             const newX = e.clientX - offsetX;
             const newY = e.clientY - offsetY;
 
-            // Move the window to the new position
             windowElement.style.left = `${newX}px`;
             windowElement.style.top = `${newY}px`;
         }
     });
 
     document.addEventListener('mouseup', () => {
-        isDragging = false; // Stop dragging when mouse is released
+        isDragging = false; 
     });
 </script>
 
