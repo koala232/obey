@@ -10,10 +10,7 @@
     <meta property="og:type" content="website" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap" rel="stylesheet" />
     <script src="https://nextparticle.nextco.de/nextparticle.min.js"></script>
     <title>#deadshot</title>
     <style>
@@ -22,7 +19,6 @@
         padding: 0;
         box-sizing: border-box;
       }
-
       body {
         display: flex;
         font-family: "Pirata One", system-ui;
@@ -30,7 +26,6 @@
         align-items: center;
         background-color: #000000;
       }
-
       .next-particle {
         width: 100%;
         overflow: hidden;
@@ -38,15 +33,12 @@
         justify-content: center;
         min-height: 70vh;
       }
-
       img {
         display: none;
       }
-
       p {
         color: #FFFFFF;
       }
-
       a {
         color: #FFFFFF;
         text-decoration: none;
@@ -54,7 +46,6 @@
       a:hover {
         text-decoration: underline;
       }
-
       .meow {
         color: #FFFFFF;
         font-size: 19px;
@@ -66,23 +57,21 @@
   </head>
   <body>
     <div class="next-particle">
-      <img src="images/angel1.png" id="logo" alt="Logo" width="500" height="500" />
+      <img src="images/pic.png" id="logo" alt="Logo" width="500" height="500" />
     </div>
-
     <p class="deadshot">#deadshot</p>
 
-    <p>
-      <a href="https://t.me/a22cw">t.me/a22cw</a> -
-      <a href="https://doxbin.org/user/obey">Doxbin</a> -
-      <a href="https://discord.com/users/1253384417813205013">@z_z_z_z_z_z_z_z_c</a>
-    </p>
+    <!-- Controls for the music player -->
+    <audio id="audio"></audio>
+    <div id="audioControls">
+      <span id="currentTime">0:00</span>
+      <button id="playPauseButton">Play/Pause</button>
+      <input type="range" id="range26" min="0" max="100" value="50" />
+      <span id="artist">Artist Name</span> - <span id="songTitle">Song Title</span>
+    </div>
 
-    <p>
-      <a href="mailto:im@trolli.ng">im@trolli.ng</a> 
-      <a href=""></a>
-    </p>
-
-    <p><a href=""></a></p>
+    <p><a href="https://t.me/a22cw">t.me/a22cw</a> - <a href="https://doxbin.org/user/obey">Doxbin</a> - <a href="https://discord.com/users/1253384417813205013">@z_z_z_z_z_z_z_z_c</a></p>
+    <p><a href="mailto:im@trolli.ng">im@trolli.ng</a></p>
 
     <script>
       const nextParticle = new NextParticle({
@@ -96,14 +85,12 @@
         mouseForce: 300,
         color: "#FFFFFF",
       });
-
       function resizeParticle() {
         nextParticle.width = window.innerWidth;
         nextParticle.height = window.innerHeight * 0.8;
         nextParticle.maxWidth = Math.min(window.innerWidth * 0.8, 400);
         nextParticle.start();
       }
-
       window.onresize = resizeParticle;
       resizeParticle();
     </script>
