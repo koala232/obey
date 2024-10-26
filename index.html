@@ -1,51 +1,112 @@
-<!DOCTYPE html>   
-<html lang="en">  
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:title" content="𐌄𐋄𐌂𐌉𐌐𐌄𐌓𐌄" />
+    <meta property="og:description" content="rawr~" />
+    <meta property="og:url" content="https://kittens.rip" />
+    <meta property="og:image" content="https://kittens.rip/♡.jpg" />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://nextparticle.nextco.de/nextparticle.min.js"></script>
+    <title>𐌄𐋄𐌂𐌉𐌐𐌄𐌓𐌄</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Cache-control" content="public">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>
-    
-    <link rel="preload" href="WOFF/FreeSerif-YO4a.woff" as="font" type="font/woff">
-    <link rel="preload" href="WOFF/jackeyfont.woff" as="font" type="font/woff">
-    <link rel="preload" href="index.css" as="style">
-    <link rel="preload" href="crt.css" as="style">          
-    <link rel="preload" href="loading.css" as="style">
-    <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="crt.css">
-    <link rel="stylesheet" href="loading.css">
+      body {
+        display: flex;
+        font-family: "Pirata One", system-ui;
+        flex-direction: column;
+        align-items: center;
+        background-color: #000000;
+      }
 
-    <link rel="icon" href="favicon.html" type="image/x-icon">
+      .next-particle {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        justify-content: center;
+        min-height: 70vh;
+      }
 
-    <title>?</title>
-    <meta name="theme-color" content="#000">
+      img {
+        display: none;
+      }
 
-    <meta property="og:title" content="?"/>
-    <meta property="og:type" content="website"/>
-    <meta property="og:description" content="?"/>
-</head>
+      p {
+        color: #ffffff;
+      }
 
-<body>
+      a {
+        color: #ffa7ed;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
 
-<crt id="crt">   
+      .meow {
+        color: #ffffff;
+        font-size: 19px;
+        text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.7);
+        margin-top: -10px;
+        text-shadow: 2px 2px #ffa7ed;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="next-particle">
+      <img src="meow.png" id="logo" alt="Logo" width="500" height="500" />
+    </div>
 
-</crt>
+    <p class="meow">meoww~ :o</p>
 
-<div class="load">        
-    <div class="ichi 一" style="display: flex; justify-content: center; align-items: center; flex-direction: column; height: 100vh; text-align: center;">
-        <h1 class="" style="margin: 0.5em;"><br></h1>
-       
-        <img src="images/rose.gif" style="height: 300px; width: 300px;" alt="Rose Image"> 
+    <p>
+      <a href="https://t.me/Excipere">t.me/Excipere</a> -
+      <a href="xmpp:sw@anoxinon.me">xmpp:sw@anoxinon.me</a> -
+      <a href="https://discord.com/users/1283531827688247371">@_excipere</a>
+    </p>
 
-        
-        <script>
-            
-            setTimeout(function() {
-                window.location.href = 'desktop';
-            }, 3000); 
-        </script>
+    <p>
+      <a href="mailto:sys@obey.sh">sys@kittens.rip</a> /
+      <a href="/pubkey.txt">pgp</a>
+    </p>
 
-</body>
+    <p><a href="https://github.com/Excipere">github.com/Excipere</a></p>
+
+    <script>
+      const nextParticle = new NextParticle({
+        image: document.getElementById("logo"),
+        width: window.innerWidth,
+        height: window.innerHeight * 0.8,
+        maxWidth: Math.min(window.innerWidth * 0.8, 400),
+        particleGap: 4,
+        velocity: 0.5,
+        proximity: 100,
+        mouseForce: 300,
+        color: "#FFA7ED",
+      });
+
+      function resizeParticle() {
+        nextParticle.width = window.innerWidth;
+        nextParticle.height = window.innerHeight * 0.8;
+        nextParticle.maxWidth = Math.min(window.innerWidth * 0.8, 400);
+        nextParticle.start();
+      }
+
+      window.onresize = resizeParticle;
+
+      resizeParticle();
+    </script>
+  </body>
 </html>
